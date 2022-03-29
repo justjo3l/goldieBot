@@ -71,7 +71,7 @@
 //   });
 
 import express from "express";
-import initWebRoute from "routes/web.js";
+import initWebRoute from "routes/web";
 import bodyParser from "body-parser";
 
 let app = express();
