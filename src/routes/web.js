@@ -1,10 +1,11 @@
-import express from "express";
+const exp = require("express");
+
 const homeController = require('../controllers/homeController.js');
 const chatController = require('../controllers/chatController.js');
 
 console.log(chatController);
 
-let router = express.Router();
+let router = exp.express.Router();
 
 let initWebRoutes = (app) => {
     router.get("/", homeController.handleWebHelloWorld);
