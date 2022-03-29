@@ -72,6 +72,8 @@
 
 const express = require("express");
 
+console.log(express);
+
 const routes = require("./routes/web.js");
 
 const bodyParser = require("body-parser");
