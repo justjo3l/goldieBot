@@ -1,3 +1,5 @@
+const { get } = require("express/lib/response");
+
 let postWebhook = (req, res) => {
     let body = req.body;
   
@@ -23,7 +25,7 @@ let postWebhook = (req, res) => {
 };
 
 let getWebhook = (req, res) => {
-    
+
     // Your verify token. Should be a random string.
     let VERIFY_TOKEN = "Jh0d083qno1fiqnj3evn"
       
@@ -50,5 +52,6 @@ let getWebhook = (req, res) => {
 };
 
 module.exports = {
-    postWebhook: postWebhook
+    postWebhook: postWebhook,
+    getWebhook: getWebhook
 };
