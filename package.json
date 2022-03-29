@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Messenger Bot for Goldstein College",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "build": "babel src/index.js -d dist",
     "start": "npm run build && node src/index.js",
