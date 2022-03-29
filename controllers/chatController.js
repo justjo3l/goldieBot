@@ -22,6 +22,8 @@ let postWebhook = (req, res) => {
       // Returns a '404 Not Found' if event is not from a page subscription
       res.sendStatus(404);
     }
+
+    return 0;
 };
 
 let getWebhook = (req, res) => {
@@ -49,11 +51,9 @@ let getWebhook = (req, res) => {
         res.sendStatus(403);      
       }
     }
-};
 
-export default function() {
     return 0;
-}
+};
 
 module.exports = {
     postWebhook: postWebhook,
