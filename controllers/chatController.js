@@ -1,5 +1,3 @@
-const { get } = require("express/lib/response");
-
 let postWebhook = (req, res) => {
     let body = req.body;
   
@@ -51,7 +49,5 @@ let getWebhook = (req, res) => {
     }
 };
 
-module.exports = {
-    postWebhook: postWebhook,
-    getWebhook: getWebhook
-};
+exports.postWebhook = postWebhook;
+exports.getWebhook = getWebhook;
