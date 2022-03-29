@@ -71,7 +71,9 @@
 //   });
 
 import express from "express";
-import initWebRoutes from "./routes/web.js";
+
+const routes = require("./routes/web.js")
+
 import bodyParser from "body-parser";
 
 let app = express();
@@ -81,4 +83,4 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // init all web routes
-initWebRoutes(app);
+routes.initWebRoutes(app);
