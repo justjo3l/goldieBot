@@ -70,17 +70,17 @@
   
 //   });
 
-import express from "express";
+const exp = require("express");
 
-const routes = require("./routes/web.js")
+const routes = require("./routes/web.js");
 
-import bodyParser from "body-parser";
+const bp = require("body-parser");
 
-let app = express();
+let app = exp.express();
 
 //use body-parser to post data
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bp.bodyParser.json());
+app.use(bp.bodyParser.urlencoded({ extended: true }));
 
 // init all web routes
 routes.initWebRoutes(app);
