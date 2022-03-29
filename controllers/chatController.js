@@ -56,6 +56,5 @@ let getWebhook = (req, res) => {
 };
 
 module.exports = {
-    postWebhook: postWebhook,
-    getWebhook: getWebhook
+    postWebhook: postWebhook
 };
