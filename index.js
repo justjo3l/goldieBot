@@ -56,6 +56,9 @@ app.post('/webhook', (req, res) => {
         let webhook_event = entry.messaging[0];
         console.log("Message Received");
         console.log(webhook_event);
+        message_text = webhook_event.message_text;
+
+        console.log("The text is : '" + message_text + "'");
       });
   
       // Returns a '200 OK' response to all requests
