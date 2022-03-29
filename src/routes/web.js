@@ -1,11 +1,11 @@
-const exp = require("express");
+const express = require("express");
 
 const homeController = require('../controllers/homeController.js');
 const chatController = require('../controllers/chatController.js');
 
 console.log(chatController);
 
-let router = exp.express.Router();
+let router = express.Router();
 
 let initWebRoutes = (app) => {
     router.get("/", homeController.handleWebHelloWorld);
