@@ -71,7 +71,7 @@
 //   });
 
 import express from "express";
-import initWebRoute from "routes/web";
+import initWebRoutes from "routes/web.js";
 import bodyParser from "body-parser";
 
 let app = express();
@@ -81,7 +81,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // init all web routes
-initWebRoute(app);
+initWebRoutes(app);
 
 let port = process.env.PORT || 8080;
 
