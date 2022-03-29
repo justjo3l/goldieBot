@@ -4,7 +4,7 @@ import chatController from "../controllers/chatController.js";
 
 let router = express.Router();
 
-export default initWebRoutes = (app) => {
+let initWebRoutes = (app) => {
     router.get("/", homeController.handleWebHelloWorld);
     router.post("/webhook", chatController.postWebhook);
     router.get("/webhook", chatController.getWebhook);

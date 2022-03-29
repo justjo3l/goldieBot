@@ -1,6 +1,6 @@
 const { get } = require("express/lib/response");
 
-export default postWebhook = (req, res) => {
+let postWebhook = (req, res) => {
     let body = req.body;
   
     // Checks this is an event from a page subscription
@@ -24,7 +24,7 @@ export default postWebhook = (req, res) => {
     }
 };
 
-getWebhook = (req, res) => {
+let getWebhook = (req, res) => {
 
     // Your verify token. Should be a random string.
     let VERIFY_TOKEN = "Jh0d083qno1fiqnj3evn"
