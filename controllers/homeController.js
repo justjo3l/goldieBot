@@ -3,3 +3,4 @@ let getHomepage = (req, res) => {
 };
 
 exports.getHomepage = getHomepage;
+export default 0;

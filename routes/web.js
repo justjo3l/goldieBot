@@ -12,3 +12,4 @@ let initWebRoutes = (app) => {
 };
 
 exports.initWebRoutes = initWebRoutes;
+export default 0;
