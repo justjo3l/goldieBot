@@ -82,4 +82,3 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // init all web routes
 initWebRoutes(app);
-app.listen(process.env.PORT || 5000);
