@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "build": "babel src/index.js -d dist",
-    "start": "nodemon --exec babel-cli src/index.js",
+    "start": "nodemon --exec babel src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rm -rf build && mkdir build",
     "build-babel": "babel -d ./build ./src -s"
@@ -30,6 +30,7 @@
     "@babel/cli": "^7.17.6",
     "@babel/core": "^7.17.8",
     "@babel/preset-env": "^7.16.11",
+    "babel-plugin-add-module-exports": "^1.0.4",
     "nodemon": "^2.0.15"
   }
 }
