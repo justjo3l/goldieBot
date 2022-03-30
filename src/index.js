@@ -72,21 +72,15 @@
 
 const express = require("express");
 
-console.log("This works!");
-
 const routes = require("./routes/web.js");
 
 const bodyParser = require("body-parser");
 
 let app = express();
 
-console.log("So does this!");
-
 //use body-parser to post data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
-console.log("This too!");
 
 // init all web routes
 routes.initWebRoutes(app);

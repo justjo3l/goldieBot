@@ -5,6 +5,9 @@ const chatController = require('../controllers/chatController.js');
 let router = express.Router();
 
 let initWebRoutes = (app) => {
+
+    console.log("IWR runs");
+
     router.get("/", homeController.getHomepage);
     router.post("/webhook", chatController.postWebhook);
     router.get("/webhook", chatController.getWebhook);

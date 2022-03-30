@@ -1,5 +1,7 @@
 let postWebhook = (req, res) => {
     let body = req.body;
+
+    console.log("PW runs");
   
     // Checks this is an event from a page subscription
     if (body.object === 'page') {
@@ -23,6 +25,8 @@ let postWebhook = (req, res) => {
 };
 
 let getWebhook = (req, res) => {
+
+    console.log("GW runs");
 
     // Your verify token. Should be a random string.
     let VERIFY_TOKEN = "Jh0d083qno1fiqnj3evn"
