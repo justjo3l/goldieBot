@@ -4,7 +4,7 @@ const chatController = require('../controllers/chatController.js');
 
 let router = express.Router();
 
-let postWebhook2 = (req, res) => {
+postWebhook2 = (req, res) => {
     let body = req.body;
 
     console.log("PW runs");
@@ -36,7 +36,7 @@ let initWebRoutes = (app) => {
 
     //router.get("/", homeController.getHomepage);
     router.post("/webhook", postWebhook2);
-    router.get("/webhook", chatController.getWebhook);
+    //router.get("/webhook", chatController.getWebhook);
 
     console.log(router);
 
