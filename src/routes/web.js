@@ -7,13 +7,10 @@ let router = express.Router();
 let initWebRoutes = (app) => {
 
     console.log("IWR runs");
-
-    console.log(chatController.module);
-    console.log("----");
-    console.log(chatController);
+    console.log(chatController.postWebhook);
 
     //router.get("/", homeController.getHomepage);
-    router.post("/webhook", chatController.module);
+    router.post("/webhook", chatController.postWebhook.apply);
     //router.get("/webhook", chatController.getWebhook);
 
     console.log(router);
