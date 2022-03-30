@@ -5,6 +5,6 @@ let getHomepage = (req, res) => {
     return res.render("homepage.ejs");
 };
 
-exports = {
+module.exports = {
     getHomepage: getHomepage
 };

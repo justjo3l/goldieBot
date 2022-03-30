@@ -18,6 +18,6 @@ let initWebRoutes = (app) => {
     return app.use("/", router);
 };
 
-exports = {
+module.exports = {
     initWebRoutes: initWebRoutes
 };
