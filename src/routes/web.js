@@ -34,7 +34,7 @@ let initWebRoutes = (app) => {
 
     console.log("IWR runs");
 
-    router.get("/", homeController.getHomepage);
+    //router.get("/", homeController.getHomepage);
     router.post("/webhook", postWebhook2);
     router.get("/webhook", chatController.getWebhook);
 
