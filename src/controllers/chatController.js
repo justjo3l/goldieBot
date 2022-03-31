@@ -89,12 +89,19 @@ function handleMessage(sender_psid, received_message) {
     if (received_text == "Shop") {
       response = {
         "attachment": {
-          "type": "catalogue",
+          "type": "list",
+          "topElementStyle": "compact",
           "items": [
             {
               "title": "Item 1",
               "subtitle": "Price 1",
-            }
+              "options": [
+                {
+                  "title": "Price",
+                  "type": "text"
+                }
+              ]
+            },
           ]
         }
       }
