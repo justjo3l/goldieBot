@@ -97,12 +97,15 @@ function handleMessage(sender_psid, received_message) {
               {
                 "title": list.shop_items[0][1].toString(),
                 "subtitle": list.shop_prices[0][1].toString()
-              },
-              {
-                "title": list.shop_items[1][1].toString(),
-                "subtitle": list.shop_prices[1][1].toString()
               }
-            ]
+            ],
+            "buttons": [
+              {
+                "title": "View More",
+                "type": "postback",
+                "payload": "payload"            
+              }
+            ] 
           }
         }
       }
