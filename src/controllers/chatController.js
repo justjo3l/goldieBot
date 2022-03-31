@@ -1,4 +1,5 @@
 const request = require("request");
+const list = require("./../data/list.js");
 
 let postWebhook = (req, res) => {
     let body = req.body;
@@ -78,9 +79,9 @@ function handleMessage(sender_psid, received_message) {
     // will be added to the body of our request to the Send API
 
     received_text = received_message.text
-    if (received_text == "Shop info") {
+    if (received_text == "Shop") {
       response = {
-        "text": `Shluts more like Shlaves, pshh`
+        "text": list.shop_items
       }
     } else {
       response = {
