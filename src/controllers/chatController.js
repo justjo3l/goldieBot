@@ -96,23 +96,23 @@ function handleMessage(sender_psid, received_message) {
             "buttons":[
               {
                 "type": "postback",
-                "title": list.shop_items[0][1] + " - " + list.shop_prices[0][1],
-                "payload": list.shop_items[0][1],
+                "title": list.shop_items[0][1].toString() + " - " + list.shop_prices[0][1].toString(),
+                "payload": list.shop_items[0][1].toString(),
               },
               {
                 "type": "postback",
-                "title": list.shop_items[1][1] + " - " + list.shop_prices[1][1],
-                "payload": list.shop_items[1][1],
+                "title": list.shop_items[1][1].toString() + " - " + list.shop_prices[1][1].toString(),
+                "payload": list.shop_items[1][1].toString(),
               },
               {
                 "type": "postback",
-                "title": list.shop_items[2][1] + " - " + list.shop_prices[2][1],
-                "payload": list.shop_items[2][1],
+                "title": list.shop_items[2][1].toString() + " - " + list.shop_prices[2][1].toString(),
+                "payload": list.shop_items[2][1].toString(),
               },
               {
                 "type": "postback",
-                "title": list.shop_items[3][1] + " - " + list.shop_prices[3][1],
-                "payload": list.shop_items[3][1],
+                "title": list.shop_items[3][1].toString() + " - " + list.shop_prices[3][1].toString(),
+                "payload": list.shop_items[3][1].toString(),
               }
             ]
           }
