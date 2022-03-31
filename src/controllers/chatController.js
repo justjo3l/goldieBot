@@ -1,3 +1,4 @@
+const { attachment } = require("express/lib/response");
 const request = require("request");
 const list = require("./../data/list.js");
 
@@ -87,7 +88,36 @@ function handleMessage(sender_psid, received_message) {
     received_text = received_message.text
     if (received_text == "Shop") {
       response = {
-        "text": list_text
+        "text": list_text,
+        "attachment": {
+          "type": "template",
+          "payload": {
+            "template_type":"button",
+            "text":"<MESSAGE_TEXT>",
+            "buttons":[
+              {
+                "type": "postback",
+                "title": list.shop_items[0][1] + " - " + list.shop_prices[0][1],
+                "payload": list.shop_items[0][1],
+              },
+              {
+                "type": "postback",
+                "title": list.shop_items[1][1] + " - " + list.shop_prices[1][1],
+                "payload": list.shop_items[1][1],
+              },
+              {
+                "type": "postback",
+                "title": list.shop_items[2][1] + " - " + list.shop_prices[2][1],
+                "payload": list.shop_items[2][1],
+              },
+              {
+                "type": "postback",
+                "title": list.shop_items[3][1] + " - " + list.shop_prices[3][1],
+                "payload": list.shop_items[3][1],
+              },
+            ]
+          }
+        }
       }
     } else {
       response = {
