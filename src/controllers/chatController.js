@@ -72,6 +72,12 @@ let getWebhook = (req, res) => {
 // Handles messages events
 function handleMessage(sender_psid, received_message) {
   let response;
+
+  list_text = "";
+
+  for (i = 0; i < 69; i++) {
+    list_text += list.shop_items[i][1] + " - " + list.shop_prices[i][1] + "\n";
+  }
   
   // Checks if the message contains text
   if (received_message.text) {    
@@ -81,7 +87,7 @@ function handleMessage(sender_psid, received_message) {
     received_text = received_message.text
     if (received_text == "Shop") {
       response = {
-        "text": list.shop_items[0][1].toString()
+        "text": list_text
       }
     } else {
       response = {
