@@ -113,7 +113,7 @@ function handleMessage(sender_psid, received_message) {
                 "type": "postback",
                 "title": list.shop_items[3][1] + " - " + list.shop_prices[3][1],
                 "payload": list.shop_items[3][1],
-              },
+              }
             ]
           }
         }
