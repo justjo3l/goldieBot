@@ -92,20 +92,11 @@ function handleMessage(sender_psid, received_message) {
           "type": "template",
           "payload": {
             "template_type":"list",
-            "top_element_style": "compact",
             "elements":[
               {
-                "title": list.shop_items[0][1].toString(),
-                "subtitle": list.shop_prices[0][1].toString()
+                "title": "Hi",
               }
             ],
-            "buttons": [
-              {
-                "title": "View More",
-                "type": "postback",
-                "payload": "payload"            
-              }
-            ] 
           }
         }
       }
