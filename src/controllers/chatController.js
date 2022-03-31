@@ -88,12 +88,11 @@ function handleMessage(sender_psid, received_message) {
     received_text = received_message.text
     if (received_text == "Shop") {
       response = {
-        "text": list_text,
         "attachment": {
           "type": "template",
           "payload": {
             "template_type":"button",
-            "text":"<MESSAGE_TEXT>",
+            "text":"List",
             "buttons":[
               {
                 "type": "postback",
