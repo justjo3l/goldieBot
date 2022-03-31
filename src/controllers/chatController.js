@@ -76,7 +76,7 @@ function handleMessage(sender_psid, received_message) {
   list_text = "";
 
   for (i = 0; i < 69; i++) {
-    list_text += list.shop_items[i][1] + " - " + list.shop_prices[i][1] + "\n";
+    list_text += list.shop_items[i][1] + " - " + list.shop_prices[i][1] + "\n\n\n";
   }
   
   // Checks if the message contains text
