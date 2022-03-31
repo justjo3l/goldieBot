@@ -91,32 +91,17 @@ function handleMessage(sender_psid, received_message) {
         "attachment": {
           "type": "template",
           "payload": {
-            "template_type":"product",
+            "template_type":"list",
+            "top_element_style": "compact",
             "elements":[
               {
                 "title": list.shop_items[0][1].toString(),
+                "subtitle": list.shop_prices[0][1].toString()
               },
               {
                 "title": list.shop_items[1][1].toString(),
-              },
-              {
-                "title": list.shop_items[2][1].toString(),
-              },
-              {
-                "title": list.shop_items[3][1].toString(),
-              },
-              {
-                "title": list.shop_items[4][1].toString(),
-              },
-              {
-                "title": list.shop_items[5][1].toString(),
-              },
-              {
-                "title": list.shop_items[6][1].toString(),
-              },
-              {
-                "title": list.shop_items[7][1].toString(),
-              },
+                "subtitle": list.shop_prices[1][1].toString()
+              }
             ]
           }
         }
