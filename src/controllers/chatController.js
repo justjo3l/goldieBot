@@ -81,7 +81,7 @@ function handleMessage(sender_psid, received_message) {
     received_text = received_message.text
     if (received_text == "Shop") {
       response = {
-        "text": list.shop_items
+        "text": list.shop_items[0].toString()
       }
     } else {
       response = {
