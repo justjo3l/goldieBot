@@ -103,17 +103,6 @@ function handleMessage(sender_psid, received_message) {
                   "url": "https://www.originalcoastclothing.com/",
                   "webview_height_ratio": "tall",
                 },
-                "buttons":[
-                  {
-                    "type":"web_url",
-                    "url":"https://www.originalcoastclothing.com/",
-                    "title":"View Website"
-                  },{
-                    "type":"postback",
-                    "title":"Start Chatting",
-                    "payload":"DEVELOPER_DEFINED_PAYLOAD"
-                  }              
-                ]      
               }
             ]
           }
