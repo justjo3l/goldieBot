@@ -103,21 +103,6 @@ function handleMessage(sender_psid, received_message) {
                     "title":list.shop_items[0][1],
                     "payload":list.shop_items[0][1],
                   },
-                  {
-                    "type":"postback",
-                    "title":list.shop_items[1][1],
-                    "payload":list.shop_items[1][1],
-                  },
-                  {
-                    "type":"postback",
-                    "title":list.shop_items[2][1],
-                    "payload":list.shop_items[2][1],
-                  },
-                  {
-                    "type":"postback",
-                    "title":list.shop_items[3][1],
-                    "payload":list.shop_items[3][1],
-                  },
                 ]      
               }
             ]
