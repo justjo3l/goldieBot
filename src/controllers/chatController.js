@@ -1,5 +1,6 @@
 const { attachment } = require("express/lib/response");
 const request = require("request");
+const { shop_items } = require("./../data/list.js");
 const list = require("./../data/list.js");
 
 let postWebhook = (req, res) => {
@@ -93,8 +94,8 @@ function handleMessage(sender_psid, received_message) {
           "payload": {
             "template_type": "generic",
             "elements": [{
-              "title": "Is this the right picture?",
-              "subtitle": "Tap a button to answer.",
+              "title": shop_items[0][1].toString(),
+              "subtitle": shop_prices[0][1].toString(),
               "buttons": [
                 {
                   "type": "postback",
