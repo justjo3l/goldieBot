@@ -96,19 +96,7 @@ function handleMessage(sender_psid, received_message) {
             "elements": [{
               "title": list.shop_items[0][1],
               "subtitle": list.shop_prices[0][1],
-            },
-            {
-              "title": list.shop_items[1][1],
-              "subtitle": list.shop_prices[1][1],
-            },
-            {
-              "title": list.shop_items[2][1],
-              "subtitle": list.shop_prices[2][1],
-            },
-            {
-              "title": list.shop_items[3][1],
-              "subtitle": list.shop_prices[3][1],
-            },
+            }
           ]
           }
         }
