@@ -94,8 +94,8 @@ function handleMessage(sender_psid, received_message) {
           "payload": {
             "template_type": "generic",
             "elements": [{
-              "title": "ok",//shop_items[0][1],
-              "subtitle": "ok",//shop_prices[0][1],
+              "title": list.shop_items[i][1],
+              "subtitle": list.shop_prices[i][1],
               "buttons": [
                 {
                   "type": "postback",
