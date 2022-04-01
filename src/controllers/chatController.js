@@ -97,7 +97,11 @@ function handleMessage(sender_psid, received_message) {
               {
                 "title":list.shop_items[0][1],
                 "subtitle":list.shop_prices[0][1],
-              }
+              },
+              {
+                "title":list.shop_items[1][1],
+                "subtitle":list.shop_prices[1][1],
+              },
             ]
           }
         }
