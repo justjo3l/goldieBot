@@ -92,7 +92,7 @@ function handleMessage(sender_psid, received_message) {
         "attachment":{
           "type":"template",
           "payload": {
-            "template_type":"generic",
+            "template_type":"list",
             "elements":[
               {
                 "title":list.shop_items[0][1],
