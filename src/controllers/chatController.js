@@ -89,20 +89,27 @@ function handleMessage(sender_psid, received_message) {
     if (received_text == "Shop") {
       response = {
         "attachment": {
-          "type": "list",
-          "topElementStyle": "compact",
-          "items": [
-            {
-              "title": "Item 1",
-              "subtitle": "Price 1",
-              "options": [
+          "type": "template",
+          "payload": {
+            "template_type": "generic",
+            "elements": [{
+              "title": "Is this the right picture?",
+              "subtitle": "Tap a button to answer.",
+              "image_url": attachment_url,
+              "buttons": [
                 {
-                  "title": "Price",
-                  "type": "text"
+                  "type": "postback",
+                  "title": "Yes!",
+                  "payload": "yes",
+                },
+                {
+                  "type": "postback",
+                  "title": "No!",
+                  "payload": "no",
                 }
-              ]
-            },
-          ]
+              ],
+            }]
+          }
         }
       }
     } else {
