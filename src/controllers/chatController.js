@@ -95,9 +95,9 @@ function handleMessage(sender_psid, received_message) {
             "template_type":"generic",
             "elements":[
                {
-                "title":"Welcome!",
+                "title":list.shop_items[0][1],
                 "image_url":"https://raw.githubusercontent.com/fbsamples/original-coast-clothing/main/public/styles/male-work.jpg",
-                "subtitle":"We have the right hat for everyone.",
+                "subtitle":list.shop_prices[0][1],
                 "default_action": {
                   "type": "web_url",
                   "url": "https://www.originalcoastclothing.com/",
