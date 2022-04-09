@@ -83,7 +83,35 @@ function handleMessage(sender_psid, received_message) {
     received_text = received_message.text
     if (received_text == "Shop") {
       response = {
-        "text": `No`
+        "attachment":{
+          "type":"template",
+          "payload":{
+            "template_type":"generic",
+            "elements":[
+               {
+                "title":"Welcome!",
+                "image_url":"https://raw.githubusercontent.com/fbsamples/original-coast-clothing/main/public/styles/male-work.jpg",
+                "subtitle":"We have the right hat for everyone.",
+                "default_action": {
+                  "type": "web_url",
+                  "url": "https://www.originalcoastclothing.com/",
+                  "webview_height_ratio": "tall",
+                },
+                "buttons":[
+                  {
+                    "type":"web_url",
+                    "url":"https://www.originalcoastclothing.com/",
+                    "title":"View Website"
+                  },{
+                    "type":"postback",
+                    "title":"Start Chatting",
+                    "payload":"DEVELOPER_DEFINED_PAYLOAD"
+                  }              
+                ]      
+              }
+            ]
+          }
+        }
       }
     } else {
       response = {
