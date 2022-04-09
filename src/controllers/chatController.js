@@ -83,29 +83,7 @@ function handleMessage(sender_psid, received_message) {
     received_text = received_message.text
     if (received_text == "Shop") {
       response = {
-        "attachment": {
-          "type": "carousel",
-          "padding": 10,
-          "payload": {
-            "template_type": "generic",
-            "elements": [{
-              "title": "Is this the right picture?",
-              "subtitle": "Tap a button to answer.",
-              "buttons": [
-                {
-                  "type": "postback",
-                  "title": "Yes!",
-                  "payload": "yes",
-                },
-                {
-                  "type": "postback",
-                  "title": "No!",
-                  "payload": "no",
-                }
-              ],
-            }]
-          }
-        }
+        "text": `No`
       }
     } else {
       response = {
