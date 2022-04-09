@@ -15,13 +15,15 @@ let postWebhook = (req, res) => {
       body.entry.forEach(function(entry) {
 
         console.log("----");
-        console.log(entry.messaging[0].message);
+        console.log(entry.messaging[0]);
         console.log("----");
 
         // Gets the body of the webhook event
         let webhook_event = entry.messaging[0];
-        console.log(webhook_event);
-        console.log(webhook_event.message.text);
+        if (entry.messaging[0] != NULL) {
+          console.log(webhook_event);
+          console.log(webhook_event.message.text);
+        }
 
 
         // Get the sender PSID
