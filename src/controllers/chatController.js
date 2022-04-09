@@ -74,12 +74,6 @@ let getWebhook = (req, res) => {
 // Handles messages events
 function handleMessage(sender_psid, received_message) {
   let response;
-
-  list_text = "";
-
-  for (i = 0; i < 69; i++) {
-    list_text +=  i.toString() + ". " + list.shop_items[i][1] + "-" + list.shop_prices[i][1] + "\n\n";
-  }
   
   // Checks if the message contains text
   if (received_message.text) {    
@@ -89,7 +83,22 @@ function handleMessage(sender_psid, received_message) {
     received_text = received_message.text
     if (received_text == "Shop") {
       response = {
-        "text": list_text
+        "payload": {
+          "template_type":"generic",
+          "elements":[
+             {
+              "title":"Shuber Eats",
+              "image_url":"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.istockphoto.com%2Fvector%2Fshopping-cart-icon-isolated-on-white-background-gm1206806317-348188144&psig=AOvVaw162l19H7JG3MSSJ0GWEhmp&ust=1649580131832000&source=images&cd=vfe&ved=0CAoQjRxqFwoTCLjs3YDLhvcCFQAAAAAdAAAAABAN",
+              "subtitle":"Order Now!",
+              "default_action": {
+                "type": "web_url",
+                "url": "https://form.jotform.com/220972012457856",
+                "messenger_extensions": TRUE,
+                "webview_height_ratio": COMPACT,
+              }, 
+            }
+          ]
+        }
     }
     } else {
       response = {
