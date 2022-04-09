@@ -88,7 +88,7 @@ function handleMessage(sender_psid, received_message) {
           "elements":[
              {
               "title":"Shuber Eats",
-              "image_url":"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.istockphoto.com%2Fvector%2Fshopping-cart-icon-isolated-on-white-background-gm1206806317-348188144&psig=AOvVaw162l19H7JG3MSSJ0GWEhmp&ust=1649580131832000&source=images&cd=vfe&ved=0CAoQjRxqFwoTCLjs3YDLhvcCFQAAAAAdAAAAABAN",
+              //"image_url":"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.istockphoto.com%2Fvector%2Fshopping-cart-icon-isolated-on-white-background-gm1206806317-348188144&psig=AOvVaw162l19H7JG3MSSJ0GWEhmp&ust=1649580131832000&source=images&cd=vfe&ved=0CAoQjRxqFwoTCLjs3YDLhvcCFQAAAAAdAAAAABAN",
               "subtitle":"Order Now!",
               "default_action": {
                 "type": "web_url",
