@@ -11,8 +11,6 @@ for (var i in shop_items) {
 for (var i in shop_prices) {
     shop_prices_array.push([i, shop_prices[i]]);
 }
-console.log(shop_items_array);
-console.log(shop_prices_array);
 
 module.exports = {
     shop_items: shop_items_array,
