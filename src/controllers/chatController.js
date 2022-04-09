@@ -4,15 +4,6 @@ const { shop_items } = require("./../data/list.js");
 const list = require("./../data/list.js");
 const botPSID = 105454618763925;
 
-function isEmpty(obj) {
-  for(var prop in obj) {
-      if(obj.hasOwnProperty(prop))
-          return false;
-  }
-
-  return true;
-}
-
 let postWebhook = (req, res) => {
     let body = req.body;
 

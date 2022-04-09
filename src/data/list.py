@@ -28,5 +28,3 @@ with open('src/data/shop_items.json', 'w') as f:
 
 with open('src/data/shop_prices.json', 'w') as f:
     json.dump(shop_prices_array, f, cls=NumpyArrayEncoder)
-
-print(shop_list)
