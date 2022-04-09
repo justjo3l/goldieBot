@@ -2,6 +2,7 @@ const { attachment } = require("express/lib/response");
 const request = require("request");
 const { shop_items } = require("./../data/list.js");
 const list = require("./../data/list.js");
+const botPSID = 105454618763925;
 
 function isEmpty(obj) {
   for(var prop in obj) {
@@ -27,8 +28,11 @@ let postWebhook = (req, res) => {
         let webhook_event = entry.messaging[0];
         if (entry.messaging[0].message === undefined) {
         } else {
-          console.log("Message: " + webhook_event.message.text)
-
+          if (webhook_event.sender.id == botPSID) {
+            console.log("Message Sent: " + webhook_event.message.text);
+          } else {
+            console.log("Message Received: " + webhook_event.message.text);
+          }
           // Get the sender PSID
           let sender_psid = webhook_event.sender.id;
           console.log('Sender PSID: ' + sender_psid);
