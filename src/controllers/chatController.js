@@ -89,24 +89,20 @@ function handleMessage(sender_psid, received_message) {
             "template_type":"generic",
             "elements":[
                {
-                "title":"Welcome!",
-                "image_url":"https://raw.githubusercontent.com/fbsamples/original-coast-clothing/main/public/styles/male-work.jpg",
-                "subtitle":"We have the right hat for everyone.",
+                "title":"Shuber Eats",
+                "image_url":"https://www.pngitem.com/pimgs/m/478-4788326_shopping-cart-png-image-shopping-cart-clipart-transparent.png",
+                "subtitle":"Order now!",
                 "default_action": {
                   "type": "web_url",
-                  "url": "https://www.originalcoastclothing.com/",
+                  "url": "https://form.jotform.com/220972012457856",
                   "webview_height_ratio": "tall",
                 },
                 "buttons":[
                   {
                     "type":"web_url",
-                    "url":"https://www.originalcoastclothing.com/",
+                    "url":"https://form.jotform.com/220972012457856",
                     "title":"View Website"
-                  },{
-                    "type":"postback",
-                    "title":"Start Chatting",
-                    "payload":"DEVELOPER_DEFINED_PAYLOAD"
-                  }              
+                  }          
                 ]      
               }
             ]
