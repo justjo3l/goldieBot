@@ -83,16 +83,23 @@ function handleMessage(sender_psid, received_message) {
     received_text = received_message.text
     if (received_text == "Shop") {
       response = {
-        "payload": {
-          "template_type":"button",
-          "text":"Shuber Eats",
-          "buttons":[
-             {
-                "type": "web_url",
-                "url": "https://form.jotform.com/220972012457856",
-                "title": "Click!"
-            }
-          ]
+        "attachment": {
+          "type": "carousel",
+          "padding": 10,
+          "payload": {
+            "template_type": "generic",
+            "elements": [{
+              "title": "Shuber Eats",
+              "subtitle": "Order Now!",
+              "buttons": [
+                {
+                  "type": "web_url",
+                  "title": "Shuber Eats",
+                  "url": "https://form.jotform.com/220972012457856",
+                }
+              ],
+            }]
+          }
         }
     }
     } else {
