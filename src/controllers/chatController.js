@@ -117,7 +117,7 @@ function handleMessage(sender_psid, received_message) {
       }
     } else {
       response = {
-        "text": `Thanks for messaging! Fuck off for now, come back later :)`
+        "text": `Thanks for messaging! Come back later :)`
       }
     }
   } else if (received_message.attachments) {
