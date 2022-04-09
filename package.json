@@ -24,6 +24,7 @@
     "@babel/plugin-transform-modules-commonjs": "^7.17.7",
     "body-parser": "^1.19.2",
     "express": "^4.17.3",
+    "jotform": "^0.1.5",
     "request": "^2.88.2"
   },
   "devDependencies": {

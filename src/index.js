@@ -9,6 +9,8 @@ const routes = require("./routes/web.js");
 
 const bodyParser = require("body-parser");
 
+var jotform = require("jotform")
+
 let app = express();
 
 app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
@@ -19,3 +21,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // init all web routes
 routes.initWebRoutes(app);
+
+jotform.options({
+	debug: true,
+	apiKey: "YOUR_API_KEY"
+});
+
+jotform.getUser()
+.then(function(r){
+	console.log("Success!")
+})
+.fail(function(e){
+	/* handle error */
+})
