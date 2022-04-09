@@ -29,8 +29,8 @@ jotform.options({
 
 jotform.getForm("220972012457856");
 
-jotform.get(function(response){
-    for(var i=0; i<response.length; i++){
-        console.log( "<li> " + response[i].title);
-    }
-});
+// jotform.get(function(response){
+//     for(var i=0; i<response.length; i++){
+//         console.log( "<li> " + response[i].title);
+//     }
+// });
