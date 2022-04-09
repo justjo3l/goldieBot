@@ -93,8 +93,6 @@ function handleMessage(sender_psid, received_message) {
               "default_action": {
                 "type": "web_url",
                 "url": "https://form.jotform.com/220972012457856",
-                "messenger_extensions": TRUE,
-                "webview_height_ratio": COMPACT,
               }, 
             }
           ]
