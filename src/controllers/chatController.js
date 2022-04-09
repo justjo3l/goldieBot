@@ -20,7 +20,7 @@ let postWebhook = (req, res) => {
 
         // Gets the body of the webhook event
         let webhook_event = entry.messaging[0];
-        if (entry.messaging[0] != NULL) {
+        if (entry.messaging[0].message !== undefined) {
           console.log(webhook_event);
           console.log(webhook_event.message.text);
         }
