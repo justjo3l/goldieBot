@@ -91,7 +91,6 @@ function handleMessage(sender_psid, received_message) {
             "elements": [{
               "title": "Is this the right picture?",
               "subtitle": "Tap a button to answer.",
-              "image_url": "https://media.istockphoto.com/vectors/shopping-cart-icon-isolated-on-white-background-vector-id1206806317?k=20&m=1206806317&s=170667a&w=0&h=kEh5VLsTHukWc7xf2BvUs8ssqS_d7vkK0-xU3MDpO7s=",
               "buttons": [
                 {
                   "type": "postback",
