@@ -24,7 +24,7 @@ routes.initWebRoutes(app);
 
 jotform.options({
 	debug: true,
-	apiKey: "YOUR_API_KEY"
+	apiKey: "915bc69aedd3fa83d163129376a8bc76"
 });
 
 jotform.getUser()
