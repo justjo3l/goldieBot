@@ -93,9 +93,14 @@ function handleMessage(sender_psid, received_message) {
               "subtitle": "Order Now!",
               "buttons": [
                 {
-                  "type": "web_url",
-                  "title": "Shuber Eats",
-                  "url": "https://form.jotform.com/220972012457856",
+                  "type": "postback",
+                  "title": "Yes!",
+                  "payload": "yes",
+                },
+                {
+                  "type": "postback",
+                  "title": "No!",
+                  "payload": "no",
                 }
               ],
             }]
