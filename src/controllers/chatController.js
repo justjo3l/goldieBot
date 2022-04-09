@@ -1,7 +1,5 @@
 const { attachment } = require("express/lib/response");
 const request = require("request");
-const { shop_items } = require("./../data/list.js");
-const list = require("./../data/list.js");
 const botPSID = 105454618763925;
 
 let postWebhook = (req, res) => {
@@ -181,6 +179,19 @@ function callSendAPI(sender_psid, response) {
     },
     "message": response
   }
+
+  // Send the HTTP request to the Messenger Platform
+  request({
+    "uri": "https://api.jotform.com/user?apiKey=915bc69aedd3fa83d163129376a8bc76",
+    "method": "GET",
+    "json": request_body
+  }, (err, res, body) => {
+    console.log("Bruh");
+  }); 
+}
+
+// Reads Submissions from Jotform table
+function callJotformAPI(sender_psid, response) {
 
   // Send the HTTP request to the Messenger Platform
   request({
