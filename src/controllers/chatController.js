@@ -189,8 +189,10 @@ function callSendAPI(sender_psid, response) {
     "method": "POST",
     "json": request_body
   }, (err, res, body) => {
-    if (!err && sender_psid!=botPSID) {
-      console.log('Message Sent!')
+    if (!err) {
+      if (sender_psid == botPSID) {
+        console.log('Message Sent!')
+      }
     } else {
       console.error("Unable to send message:" + err);
     }
