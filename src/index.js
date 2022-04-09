@@ -22,6 +22,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // init all web routes
 routes.initWebRoutes(app);
 
+// Jotform api
+/*
 jotform.options({
 	debug: true,
 	apiKey: "915bc69aedd3fa83d163129376a8bc76"
@@ -30,6 +32,7 @@ jotform.options({
 jotform.getForm("220972012457856").then(function(r) {
     console.log(r);
 });
+*/
 
 // jotform.get(function(response){
 //     for(var i=0; i<response.length; i++){
