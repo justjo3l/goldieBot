@@ -3,6 +3,15 @@ const request = require("request");
 const { shop_items } = require("./../data/list.js");
 const list = require("./../data/list.js");
 
+function isEmpty(obj) {
+  for(var prop in obj) {
+      if(obj.hasOwnProperty(prop))
+          return false;
+  }
+
+  return true;
+}
+
 let postWebhook = (req, res) => {
     let body = req.body;
 
@@ -20,7 +29,7 @@ let postWebhook = (req, res) => {
 
         // Gets the body of the webhook event
         let webhook_event = entry.messaging[0];
-        if (entry.messaging[0].message !== undefined) {
+        if (!isEmpty(entry.messaging[0].message)) {
           console.log(webhook_event);
           console.log(webhook_event.message.text);
         }
