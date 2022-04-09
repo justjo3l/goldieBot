@@ -18,6 +18,9 @@ let postWebhook = (req, res) => {
         let webhook_event = entry.messaging[0];
         console.log(webhook_event);
         console.log(webhook_event.message.text);
+        console.log("----");
+        console.log(entry);
+        console.log("----");
 
 
         // Get the sender PSID
@@ -31,8 +34,6 @@ let postWebhook = (req, res) => {
         } else if (webhook_event.postback) {
           handlePostback(sender_psid, webhook_event.postback);
         } else {
-          console.log("This is not controlled!");
-          console.log(entry);
         }
         
       });
