@@ -27,7 +27,9 @@ jotform.options({
 	apiKey: "915bc69aedd3fa83d163129376a8bc76"
 });
 
-jotform.getForm("220972012457856");
+jotform.getForm("220972012457856").then(function(r) {
+    console.log(r);
+});
 
 // jotform.get(function(response){
 //     for(var i=0; i<response.length; i++){
