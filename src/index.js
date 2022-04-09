@@ -28,6 +28,7 @@ jotform.options({
 });
 
 jotform.getForms(function(response){
+    console.log("Hello");
     for(var i=0; i<response.length; i++){
         console.log( "<li> " + response[i].title);
     }
