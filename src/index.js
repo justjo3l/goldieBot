@@ -27,8 +27,9 @@ jotform.options({
 	apiKey: "915bc69aedd3fa83d163129376a8bc76"
 });
 
-jotform.getForms(function(response){
-    console.log("Hello");
+jotform.getForm("220972012457856");
+
+jotform.get(function(response){
     for(var i=0; i<response.length; i++){
         console.log( "<li> " + response[i].title);
     }
