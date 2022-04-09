@@ -29,6 +29,6 @@ jotform.options({
 
 jotform.getForms(function(response){
     for(var i=0; i<response.length; i++){
-        document.write( "<li> " + response[i].title);
+        console.log( "<li> " + response[i].title);
     }
 });
