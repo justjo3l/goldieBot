@@ -1,14 +1,11 @@
 {
   "name": "goldiebot",
   "version": "1.0.0",
-  "description": "Messenger Bot for Goldstein College",
-  "main": "index.js",
+  "description": "Messenger bot for Goldstein College",
+  "main": "server.js",
   "scripts": {
-    "build": "babel src/index.js -d dist",
-    "start": "npm run build && node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "clean": "rm -rf build && mkdir build",
-    "build-babel": "babel -d ./build ./src -s"
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -21,16 +18,11 @@
   },
   "homepage": "https://github.com/justjo3l/goldieBot#readme",
   "dependencies": {
-    "@babel/plugin-transform-modules-commonjs": "^7.17.7",
-    "body-parser": "^1.19.2",
-    "express": "^4.17.3",
-    "jotform": "^0.1.5",
-    "request": "^2.88.2"
-  },
-  "devDependencies": {
-    "@babel/cli": "^7.17.6",
-    "@babel/core": "^7.17.8",
-    "@babel/preset-env": "^7.16.11",
-    "babel-plugin-add-module-exports": "^1.0.4"
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.0.1",
+    "request": "^2.88.2",
+    "save": "^2.9.0"
   }
 }
