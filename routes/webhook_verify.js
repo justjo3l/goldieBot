@@ -1,6 +1,7 @@
-import processPostback from '../processes/postback';
-import processMessage from '../processes/message';
-module.exports = function(app, chalk){
+import processPostback from '../processes/postback.js';
+import processMessage from '../processes/message.js';
+
+export default function webhookVerify(app, chalk){
   app.get('/webhook', function(req, res) {
     if (req.query['hub.verify_token'] === process.env.VERIFY_TOKEN){
        console.log('webhook verified');

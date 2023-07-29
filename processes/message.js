@@ -1,6 +1,6 @@
 import request from 'request';
-import sendMessage from '../templates/sendMessage';
-module.exports = function processMessage(event) {
+import sendMessage from '../templates/sendMessage.js';
+export default function processMessage(event) {
   if (!event.message.is_echo) {
     const message = event.message;
     const senderID = event.sender.id;

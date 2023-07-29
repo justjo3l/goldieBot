@@ -1,5 +1,5 @@
 import request from "request";
-module.exports = function senderAction(recipientId){
+export default function senderAction(recipientId){
 request({
   url: "https://graph.facebook.com/v3.3/me/messages",
   qs: { access_token: process.env.PAGE_ACCESS_TOKEN },

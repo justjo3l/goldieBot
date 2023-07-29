@@ -1,5 +1,5 @@
 import request from "request";
-module.exports = function sendMessage(recipientId, message){
+export default function sendMessage(recipientId, message){
 
 return new Promise(function(resolve, reject) {
    request({

@@ -1,7 +1,7 @@
 import express from 'express';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
-import webhookVerify from './routes/webhook_verify';
+import webhookVerify from './routes/webhook_verify.js';
 const app = express();
 // app configuration
 app.set('port', (process.env.PORT || 3000));

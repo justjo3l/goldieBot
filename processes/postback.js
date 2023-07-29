@@ -1,7 +1,7 @@
 import request from 'request';
-import senderAction from '../templates/senderAction';
-import sendMessage from '../templates/sendMessage';
-module.exports = function processPostback(event) {
+import senderAction from '../templates/senderAction.js';
+import sendMessage from '../templates/sendMessage.js';
+export default function processPostback(event) {
   const senderID = event.sender.id;
   const payload = event.postback.payload;
   if (payload === 'WELCOME') {
