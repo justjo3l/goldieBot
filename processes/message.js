@@ -28,12 +28,12 @@ module.exports = function processMessage(event) {
           reply = "Hello " + first_name + "! ";
           console.log(reply);
         }
-      });
 
-      reply += "You said \"" + message.text + "\"!";
-      console.log(reply);
-      sendMessage(senderID, {text: reply}).then(() => {
-        console.log("Message sent!");
+        reply += "You said \"" + message.text + "\"!";
+        console.log(reply);
+        sendMessage(senderID, {text: reply}).then(() => {
+          console.log("Message sent!");
+        });
       });
     }
   }
