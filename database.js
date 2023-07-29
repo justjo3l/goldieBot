@@ -51,7 +51,6 @@ export function getDinoMenu(index) {
                 id: doc.id,
                 ...doc.data()
             }));
-            console.log(data);
             data.forEach((menu) => {
                 if (menu.day == index) {
                     dinoMenu = menu;
