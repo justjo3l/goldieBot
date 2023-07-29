@@ -1,6 +1,7 @@
 import express from 'express';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
+import webhookVerify from './routes/webhook_verify';
 const app = express();
 // app configuration
 app.set('port', (process.env.PORT || 3000));
@@ -9,7 +10,7 @@ app.use(morgan('dev')); // log every request to the console.
 app.use(bodyParser.urlencoded({ extended:false }));
 app.use(bodyParser.json()); 
 // app routes
-require('./routes/webhook_verify')(app);
+webhookVerify(app);
 // warming up the engines !! setta !! go !!!.
 app.listen(app.get('port'), function() {
   const url = 'http://localhost:' + app.set('port');
