@@ -15,6 +15,7 @@ export default function processMessage(event) {
         let days = Math.floor((new Date(date) - new Date("05/29/2023")) / (1000 * 60 * 60 * 24));
         days %= 21;
         let reply = 'No menu found for that date.'
+        console.log("INDEX: " + days);
         let menu = getDinoMenu(days);
         if (menu != null) {
           reply = menu.breakfast;
