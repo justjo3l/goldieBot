@@ -59,6 +59,7 @@ export function getDinoMenu(index) {
             });
 
             if (dinoMenu) {
+                dinoMenu.replace(/\\n/g, '\n');
                 resolve(dinoMenu);
             }
             else {
