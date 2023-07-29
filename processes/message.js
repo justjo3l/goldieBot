@@ -1,5 +1,4 @@
 const request = require('request');
-const senderAction = require('../templates/senderAction');
 const sendMessage = require('../templates/sendMessage');
 module.exports = function processMessage(event) {
   if (!event.message.is_echo) {
@@ -8,8 +7,6 @@ module.exports = function processMessage(event) {
     console.log("Received message from senderId: " + senderID);
     console.log("Message is: " + JSON.stringify(message));
     if (message.text) {
-      console.log("Text received!");
-
       let reply = '';
 
       // Sending a GET request to get user's first name
@@ -26,11 +23,9 @@ module.exports = function processMessage(event) {
           console.log(bodyObject);
           let first_name = bodyObject.first_name;
           reply = "Hello " + first_name + "! ";
-          console.log(reply);
         }
 
         reply += "You said \"" + message.text + "\"!";
-        console.log(reply);
         sendMessage(senderID, {text: reply}).then(() => {
           console.log("Message sent!");
         });
