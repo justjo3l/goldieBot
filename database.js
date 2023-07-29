@@ -51,6 +51,7 @@ export function getDinoMenu(index) {
                 id: doc.id,
                 ...doc.data()
             }));
+            console.log("INDEX: " + index);
             if (data.index == index) {
                 dinoMenu = data;
             }
