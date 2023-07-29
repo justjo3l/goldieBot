@@ -17,12 +17,15 @@ export default function processMessage(event) {
         days =  days % 21;
         console.log("DAYS 2: " + days);
         let reply = 'No menu found for that date.'
-        let menu = getDinoMenu(days);
-        if (menu != null) {
-          reply = menu.breakfast;
-        }
-        sendMessage(senderID, {text: reply}).then(() => {
-          console.log("Correct Dino Message sent!");
+        getDinoMenu(days).then((menu) => {
+          if (menu != null) {
+            reply = menu.breakfast;
+          }
+          sendMessage(senderID, {text: reply}).then(() => {
+            console.log("Dino Message sent!");
+          }).catch((err) => {
+            console.log("Dino Message error");
+          });
         });
       } else {
         let reply = '';

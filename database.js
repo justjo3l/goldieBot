@@ -34,7 +34,7 @@ export default function getDinoMenus() {
                 resolve(dinoMenus);
             }
             else {
-                reject(Error("Error getting dino menus"));
+                reject(null);
             }
         });
     });
@@ -53,7 +53,7 @@ export function getDinoMenu(index) {
             }));
             console.log(data);
             data.forEach((menu) => {
-                if (menu.index == index) {
+                if (menu.day == index) {
                     dinoMenu = menu;
                 }
             });
@@ -62,7 +62,7 @@ export function getDinoMenu(index) {
                 resolve(dinoMenu);
             }
             else {
-                reject(Error("Error getting dino menus"));
+                reject(null);
             }
         });
     });
