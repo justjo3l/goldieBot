@@ -31,6 +31,7 @@ module.exports = function processMessage(event) {
       });
 
       reply += "You said \"" + message.text + "\"!";
+      console.log(reply);
       sendMessage(senderID, {text: reply}).then(() => {
         console.log("Message sent!");
       });
