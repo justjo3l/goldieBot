@@ -13,9 +13,10 @@ export default function processMessage(event) {
         let date = message.text.split(" ")[1];
         // Get number of days since 29/05/2023
         let days = Math.floor((new Date(date) - new Date("05/29/2023")) / (1000 * 60 * 60 * 24));
-        days %= 21;
+        console.log("DAYS: " + days);
+        days =  days % 21;
+        console.log("DAYS 2: " + days);
         let reply = 'No menu found for that date.'
-        console.log("INDEX: " + days);
         let menu = getDinoMenu(days);
         if (menu != null) {
           reply = menu.breakfast;
