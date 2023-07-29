@@ -1,4 +1,4 @@
-const request = require('request');
+import request from "request";
 module.exports = function senderAction(recipientId){
 request({
   url: "https://graph.facebook.com/v3.3/me/messages",

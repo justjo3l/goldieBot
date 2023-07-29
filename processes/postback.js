@@ -1,6 +1,6 @@
-const request = require('request');
-const senderAction = require('../templates/senderAction');
-const sendMessage = require('../templates/sendMessage');
+import request from 'request';
+import senderAction from '../templates/senderAction';
+import sendMessage from '../templates/sendMessage';
 module.exports = function processPostback(event) {
   const senderID = event.sender.id;
   const payload = event.postback.payload;

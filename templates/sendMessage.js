@@ -1,4 +1,4 @@
-const request = require('request');
+import request from "request";
 module.exports = function sendMessage(recipientId, message){
 
 return new Promise(function(resolve, reject) {

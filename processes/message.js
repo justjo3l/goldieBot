@@ -1,5 +1,5 @@
-const request = require('request');
-const sendMessage = require('../templates/sendMessage');
+import request from 'request';
+import sendMessage from '../templates/sendMessage';
 module.exports = function processMessage(event) {
   if (!event.message.is_echo) {
     const message = event.message;
