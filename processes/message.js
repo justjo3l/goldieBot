@@ -8,10 +8,10 @@ export default function processMessage(event) {
     console.log("Message is: " + JSON.stringify(message));
     if (message.text) {
       if (message.text == "dino" || message.text == "Dino") {
-        today = new Date();
+        let today = new Date();
         // Get date in format DD-MM-YYYY
-        date = today.getDate() + '-' + (today.getMonth()+1) + '-' + today.getFullYear();
-        let reply = "Dino's menu for " + date + " is not available yet.";
+        today = today.getDate() + '-' + (today.getMonth()+1) + '-' + today.getFullYear();
+        let reply = "Dino's menu for " + today + " is not available yet.";
         sendMessage(senderID, {text: reply}).then(() => {
           console.log("Dino Message sent!");
         });
