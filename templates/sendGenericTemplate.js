@@ -20,7 +20,7 @@ module.exports = function sendGenericTemplate(recipientId, respBody) {
          }
       }
 request({
-       url: 'https://graph.facebook.com/v2.6/me/messages',
+       url: 'https://graph.facebook.com/v3.3/me/messages',
        qs: { access_token: process.env.PAGE_ACCESS_TOKEN },
        method: 'POST',
        json: {
