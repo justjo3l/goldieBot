@@ -52,9 +52,11 @@ export function getDinoMenu(index) {
                 ...doc.data()
             }));
             console.log(data);
-            if (data.index == index) {
-                dinoMenu = data;
-            }
+            data.forEach((menu) => {
+                if (menu.index == index) {
+                    dinoMenu = menu;
+                }
+            });
 
             if (dinoMenu) {
                 resolve(dinoMenu);
