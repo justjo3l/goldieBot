@@ -39,3 +39,28 @@ export default function getDinoMenus() {
         });
     });
 }
+
+export function getDinoMenu(index) {
+
+    return new Promise((resolve, reject) => {
+
+        let dinoMenu = null;
+
+        getDocs(collection(db, "dinoMenus")).then((querySnapshot) => {
+            const data = querySnapshot.docs.map((doc) => ({
+                id: doc.id,
+                ...doc.data()
+            }));
+            if (data.index == index) {
+                dinoMenu = data;
+            }
+
+            if (dinoMenu) {
+                resolve(dinoMenu);
+            }
+            else {
+                reject(Error("Error getting dino menus"));
+            }
+        });
+    });
+}

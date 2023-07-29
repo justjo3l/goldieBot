@@ -1,5 +1,6 @@
 import request from 'request';
 import sendMessage from '../templates/sendMessage.js';
+import { getDinoMenu } from '../database.js';
 export default function processMessage(event) {
   if (!event.message.is_echo) {
     const message = event.message;
@@ -7,13 +8,19 @@ export default function processMessage(event) {
     console.log("Received message from senderId: " + senderID);
     console.log("Message is: " + JSON.stringify(message));
     if (message.text) {
-      if (message.text == "dino" || message.text == "Dino") {
-        let today = new Date();
-        // Get date in format DD/MM/YYYY
-        today = today.getDate() + '/' + (today.getMonth()+1) + '/' + today.getFullYear();
-        let reply = "Dino's menu for " + today + " is not available yet.";
+      if (message.text.startsWith("dino") || message.text.startsWith("Dino")) {
+        // Get date as second part of message text
+        let date = message.text.split(" ")[1];
+        // Get number of days since 29/05/2023
+        let days = Math.floor((new Date(date) - new Date("05/29/2023")) / (1000 * 60 * 60 * 24));
+        days %= 21;
+        let reply = 'No menu found for that date.'
+        menu = getDinoMenu(days);
+        if (menu != null) {
+          reply = menu.breakfast;
+        }
         sendMessage(senderID, {text: reply}).then(() => {
-          console.log("Dino Message sent!");
+          console.log("Correct Dino Message sent!");
         });
       } else {
         let reply = '';
