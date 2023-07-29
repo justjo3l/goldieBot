@@ -20,6 +20,7 @@ export default function processMessage(event) {
         getDinoMenu(days).then((menu) => {
           if (menu != null) {
             reply = menu.breakfast;
+            reply.replace(/\\n/g, '\n')
           }
           sendMessage(senderID, {text: reply}).then(() => {
             console.log("Dino Message sent!");
