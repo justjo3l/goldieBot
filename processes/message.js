@@ -7,29 +7,39 @@ module.exports = function processMessage(event) {
     console.log("Received message from senderId: " + senderID);
     console.log("Message is: " + JSON.stringify(message));
     if (message.text) {
-      let reply = '';
-
-      // Sending a GET request to get user's first name
-      request({ url: "https://graph.facebook.com/v3.3/" + senderID,
-          qs: { access_token: process.env.PAGE_ACCESS_TOKEN,
-                fields: "first_name"
-              },
-          method: "GET"
-        }, function(error, response, body) {
-        if (error) {
-          console.error("Error getting user name: " + error);
-        } else {
-          let bodyObject = JSON.parse(body);
-          console.log(bodyObject);
-          let first_name = bodyObject.first_name;
-          reply = "Hello " + first_name + "! ";
-        }
-
-        reply += "You said \"" + message.text + "\"!";
+      if (message.text == "dino" || message.text == "Dino") {
+        today = new Date();
+        // Get date in format DD-MM-YYYY
+        date = today.getDate() + '-' + (today.getMonth()+1) + '-' + today.getFullYear();
+        let reply = "Dino's menu for " + date + " is not available yet.";
         sendMessage(senderID, {text: reply}).then(() => {
-          console.log("Message sent!");
+          console.log("Dino Message sent!");
         });
-      });
+      } else {
+        let reply = '';
+
+        // Sending a GET request to get user's first name
+        request({ url: "https://graph.facebook.com/v3.3/" + senderID,
+            qs: { access_token: process.env.PAGE_ACCESS_TOKEN,
+                  fields: "first_name"
+                },
+            method: "GET"
+          }, function(error, response, body) {
+          if (error) {
+            console.error("Error getting user name: " + error);
+          } else {
+            let bodyObject = JSON.parse(body);
+            console.log(bodyObject);
+            let first_name = bodyObject.first_name;
+            reply = "Hello " + first_name + "! ";
+          }
+
+          reply += "You said \"" + message.text + "\"!";
+          sendMessage(senderID, {text: reply}).then(() => {
+            console.log("Message sent!");
+          });
+        });
+      }
     }
   }
 }
