@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Messenger bot for Goldstein College",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js"
@@ -20,6 +21,7 @@
   "dependencies": {
     "body-parser": "^1.20.2",
     "express": "^4.18.2",
+    "firebase": "^10.1.0",
     "morgan": "^1.10.0",
     "nodemon": "^3.0.1",
     "processes": "^0.0.1",
