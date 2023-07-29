@@ -25,15 +25,15 @@ module.exports = function processMessage(event) {
           let bodyObject = JSON.parse(body);
           console.log(bodyObject);
           let first_name = bodyObject.first_name;
-          reply = "Hello " + first_name  + "! ";
+          reply = "Hello " + first_name + "! ";
+          console.log(reply);
         }
-      }).then(() => {
-        reply += "You said \"" + message.text + "\"!";
-        senderAction(senderID);
-        sendMessage(senderID, {text: reply}).then(() => {
-          console.log("Message sent!");
-        });
-      })
+      });
+
+      reply += "You said \"" + message.text + "\"!";
+      sendMessage(senderID, {text: reply}).then(() => {
+        console.log("Message sent!");
+      });
     }
   }
 }
