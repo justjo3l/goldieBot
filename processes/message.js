@@ -27,12 +27,13 @@ module.exports = function processMessage(event) {
           let first_name = bodyObject.first_name;
           reply = "Hello " + first_name  + "! ";
         }
-      });
-      reply += "You said \"" + message.text + "\"!";
-      senderAction(senderID);
-      sendMessage(senderID, {text: reply}).then(() => {
-        console.log("Message sent!");
-      });
+      }).then(() => {
+        reply += "You said \"" + message.text + "\"!";
+        senderAction(senderID);
+        sendMessage(senderID, {text: reply}).then(() => {
+          console.log("Message sent!");
+        });
+      })
     }
   }
 }
