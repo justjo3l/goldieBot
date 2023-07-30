@@ -13,11 +13,11 @@ export default function processMessage(event) {
     console.log("Received message from senderId: " + senderID);
     console.log("Message is: " + JSON.stringify(message));
     if (message.text) {
-      if (message.text == "dino") {
+      if (message.text == "dino" || message.text == "Dino") {
         let date = new Date();
         let days = Math.floor((new Date(date) - new Date("05/29/2023")) / (1000 * 60 * 60 * 24));
         days =  days % 21;
-        let reply = 'No menu found for that date.'
+        let reply = '';
 
         let time = date.getHours() * 100 + date.getMinutes();
 
@@ -43,6 +43,13 @@ export default function processMessage(event) {
           }).catch((err) => {
             console.log("Dino Message error");
           });
+        }).catch((err) => {
+          reply = 'No menu found for that date.'
+          sendMessage(senderID, {text: reply}).then(() => {
+            console.log("Dino Error Message sent!");
+          }).catch((err) => {
+            console.log("Dino Error Message error");
+          });
         });
       } else if (message.text.startsWith("dino") || message.text.startsWith("Dino")) {
 
@@ -53,7 +60,7 @@ export default function processMessage(event) {
         // Get number of days since 29/05/2023
         let days = Math.floor((new Date(date) - new Date("05/29/2023")) / (1000 * 60 * 60 * 24));
         days =  days % 21;
-        let reply = 'No menu found for that date.'
+        let reply = ''
 
         // Get breakfast, brunch, lunch or dinner option as third part of message text
         let option = message.text.split(" ")[2];
@@ -84,6 +91,13 @@ export default function processMessage(event) {
             console.log("Dino Message sent!");
           }).catch((err) => {
             console.log("Dino Message error");
+          });
+        }).catch((err) => {
+          reply = 'No menu found for that date.'
+          sendMessage(senderID, {text: reply}).then(() => {
+            console.log("Dino Error Message sent!");
+          }).catch((err) => {
+            console.log("Dino Error Message error");
           });
         });
       } else {
