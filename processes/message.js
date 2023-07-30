@@ -1,18 +1,49 @@
 import request from 'request';
 import sendMessage from '../templates/sendMessage.js';
 import { getDinoMenu } from '../database.js';
+import replaceNewLine, { calculateTime } from '../util/helper.js';
 
-function replaceNewLine(str) {
-  return str.trim().replace(/\\n/g, "\n\n");
+function getDaysFromDate(date) {
+  let date = calculateTime(new Date(date), 10);
+  let compareDate = calculateTime(new Date("05/29/2023"), 10);
+  let days = Math.floor((date - compareDate) / (1000 * 60 * 60 * 24));
+  days =  days % 21;
+  return days;
 }
 
-function calculateTime(d, offset) {
+function dinoReplyHandler(days, time, option) {
+  let reply = '';
+  getDinoMenu(days).then((menu) => {
+    if (menu != null) {
+      if (option == "breakfast" || option == "Breakfast" || time > 0 && time <= 1000) {
+        reply = "BREAKFAST:\n\n";
+        reply += replaceNewLine(menu.breakfast);
+      } else if (option == "brunch" || option == "Brunch" || time < 1200 && menu.brunch != "") {
+        reply = "BRUNCH:\n\n";
+        reply += replaceNewLine(menu.brunch);
+      } else if (option == "lunch" || option == "Lunch" || time <= 1415) {
+        reply = "LUNCH:\n\n";
+        reply += replaceNewLine(menu.lunch);
+      } else {
+        reply = "DINNER:\n\n";
+        reply += replaceNewLine(menu.dinner);
+        reply += "\n\nDESSERT:\n\n";
+        reply += replaceNewLine(menu.dessert);
+      }
+      replySender(reply);
+    }
+  }).catch((err) => {
+    reply = 'No menu found for that date.';
+    replySender(reply);
+  });
+}
 
-  let utc = d.getTime() + (d.getTimezoneOffset() * 60000);
-
-  let nd = new Date(utc + (3600000*offset));
-
-  return nd
+function replySender(reply) {
+  sendMessage(senderID, {text: reply}).then(() => {
+    console.log("Message sent!");
+  }).catch((err) => {
+    console.log("Message error");
+  });
 }
 
 export default function processMessage(event) {
@@ -23,45 +54,12 @@ export default function processMessage(event) {
     console.log("Message is: " + JSON.stringify(message));
     if (message.text) {
       if (message.text == "dino" || message.text == "Dino") {
-        let date = calculateTime(new Date(), 10);
-        let compareDate = calculateTime(new Date("05/29/2023"), 10);
-
-        let days = Math.floor((date - compareDate) / (1000 * 60 * 60 * 24));
-        days =  days % 21;
-        let reply = '';
+        let days = getDaysFromDate(new Date());
 
         let time = date.getHours() * 100 + date.getMinutes();
 
-        getDinoMenu(days).then((menu) => {
-          if (menu != null) {
-            if (time > 0 && time <= 1000) {
-              reply = "BREAKFAST:\n\n"
-              reply += replaceNewLine(menu.breakfast);
-            } else if (time < 1200 && menu.brunch != "") {
-              reply = "BRUNCH:\n\n"
-              reply += replaceNewLine(menu.brunch);
-            } else if (time <= 1415) {
-              reply = "LUNCH:\n\n"
-              reply += replaceNewLine(menu.lunch);
-            } else {
-              reply = "DINNER:\n\n"
-              reply += replaceNewLine(menu.dinner) + "\n\nDESSERT:\n\n";
-              reply += replaceNewLine(menu.dessert);
-            }
-          }
-          sendMessage(senderID, {text: reply}).then(() => {
-            console.log("Dino Message sent!");
-          }).catch((err) => {
-            console.log("Dino Message error");
-          });
-        }).catch((err) => {
-          reply = 'No menu found for that date.'
-          sendMessage(senderID, {text: reply}).then(() => {
-            console.log("Dino Error Message sent!");
-          }).catch((err) => {
-            console.log("Dino Error Message error");
-          });
-        });
+        dinoReplyHandler(days, time, "");
+
       } else if (message.text.startsWith("dino") || message.text.startsWith("Dino")) {
 
         // Get date as second part of message text
@@ -69,51 +67,12 @@ export default function processMessage(event) {
         // Convert date from DD/MM/YYYY to MM/DD/YYYY
         date = date.split("/")[1] + "/" + date.split("/")[0] + "/" + date.split("/")[2];
 
-        date = calculateTime(new Date(date), 10);
-        let compareDate = calculateTime(new Date("05/29/2023"), 10);
-        // Get number of days since 29/05/2023
-        let days = Math.floor((date - compareDate) / (1000 * 60 * 60 * 24));
-        days =  days % 21;
-        let reply = ''
+        let days = getDaysFromDate(new Date(date));
 
         // Get breakfast, brunch, lunch or dinner option as third part of message text
         let option = message.text.split(" ")[2];
 
-        getDinoMenu(days).then((menu) => {
-          if (menu != null) {
-            if (option == "breakfast" || option == "Breakfast") {
-              reply = "BREAKFAST:\n\n"
-              reply += replaceNewLine(menu.breakfast);
-            } else if (option == "brunch" || option == "Brunch") {
-              reply = "BRUNCH:\n\n"
-              reply += replaceNewLine(menu.brunch);
-              if (menu.brunch == "") {
-                reply = "No brunch on this day."
-              }
-            } else if (option == "lunch" || option == "Lunch") {
-              reply = "LUNCH:\n\n"
-              reply += replaceNewLine(menu.lunch);
-            } else if (option == "dinner" || option == "Dinner") {
-              reply = "DINNER:\n\n"
-              reply += replaceNewLine(menu.dinner) + "\n\nDESSERT:\n\n";
-              reply += replaceNewLine(menu.dessert);
-            } else {
-              reply = "Please specify breakfast, brunch, lunch or dinner."
-            }
-          }
-          sendMessage(senderID, {text: reply}).then(() => {
-            console.log("Dino Message sent!");
-          }).catch((err) => {
-            console.log("Dino Message error");
-          });
-        }).catch((err) => {
-          reply = 'No menu found for that date.'
-          sendMessage(senderID, {text: reply}).then(() => {
-            console.log("Dino Error Message sent!");
-          }).catch((err) => {
-            console.log("Dino Error Message error");
-          });
-        });
+        dinoReplyHandler(days, 0, option);
       } else {
         let reply = '';
 
