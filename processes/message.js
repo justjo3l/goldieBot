@@ -1,6 +1,11 @@
 import request from 'request';
 import sendMessage from '../templates/sendMessage.js';
 import { getDinoMenu } from '../database.js';
+
+function replaceNewLine(str) {
+  return str.trim().replace(/\\n/g, "\n");
+}
+
 export default function processMessage(event) {
   if (!event.message.is_echo) {
     const message = event.message;
@@ -17,7 +22,7 @@ export default function processMessage(event) {
         let reply = 'No menu found for that date.'
         getDinoMenu(days).then((menu) => {
           if (menu != null) {
-            reply = menu.breakfast;
+            reply = replaceNewLine(menu.breakfast);
           }
           sendMessage(senderID, {text: reply}).then(() => {
             console.log("Dino Message sent!");
