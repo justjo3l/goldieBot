@@ -3,7 +3,7 @@ import sendMessage from '../templates/sendMessage.js';
 import { getDinoMenu } from '../database.js';
 
 function replaceNewLine(str) {
-  return str.trim().replace(/\\n/g, "\n");
+  return str.trim().replace(/\\n/g, "\n\n");
 }
 
 export default function processMessage(event) {
@@ -30,20 +30,20 @@ export default function processMessage(event) {
         getDinoMenu(days).then((menu) => {
           if (menu != null) {
             if (option == "breakfast" || option == "Breakfast") {
-              reply = "BREAKFAST:\n"
+              reply = "BREAKFAST:\n\n"
               reply += replaceNewLine(menu.breakfast);
             } else if (option == "brunch" || option == "Brunch") {
-              reply = "BRUNCH:\n"
+              reply = "BRUNCH:\n\n"
               reply += replaceNewLine(menu.brunch);
               if (menu.brunch == "") {
                 reply = "No brunch on this day."
               }
             } else if (option == "lunch" || option == "Lunch") {
-              reply = "LUNCH:\n"
+              reply = "LUNCH:\n\n"
               reply += replaceNewLine(menu.lunch);
             } else if (option == "dinner" || option == "Dinner") {
-              reply = "DINNER:\n"
-              reply += replaceNewLine(menu.dinner) + "\n";
+              reply = "DINNER:\n\n"
+              reply += replaceNewLine(menu.dinner) + "\n\nDESSERT:\n\n";
               reply += replaceNewLine(menu.dessert);
             } else {
               reply = "Please specify breakfast, brunch, lunch or dinner."
