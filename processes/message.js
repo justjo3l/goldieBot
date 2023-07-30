@@ -14,11 +14,18 @@ export default function processMessage(event) {
     console.log("Message is: " + JSON.stringify(message));
     if (message.text) {
       if (message.text == "dino" || message.text == "Dino") {
-        let date = new Date();
+        let date = new Date().toLocaleString("en-US", {
+          localeMatcher: "best fit",
+          timeZoneName: "short"
+        });
         console.log("Date 1: " + date);
         console.log("Date 2: " + new Date("05/29/2023"));
+        compareDate = new Date("05/29/2023").toLocaleString("en-US", {
+          localeMatcher: "best fit",
+          timeZoneName: "short"
+        });
         // Calculate the difference between the current date and 29/05/2023
-        let days = Math.floor((date.getTime() - new Date("05/29/2023").getTime()) / (1000 * 60 * 60 * 24));
+        let days = Math.floor((date - compareDate) / (1000 * 60 * 60 * 24));
         console.log("Days: " + days);
         days =  days % 21;
         console.log("Days: " + days);
