@@ -6,6 +6,15 @@ function replaceNewLine(str) {
   return str.trim().replace(/\\n/g, "\n\n");
 }
 
+function calculateTime(d, offset) {
+
+  let utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+
+  let nd = new Date(utc + (3600000*offset));
+
+  return nd
+}
+
 export default function processMessage(event) {
   if (!event.message.is_echo) {
     const message = event.message;
@@ -14,8 +23,8 @@ export default function processMessage(event) {
     console.log("Message is: " + JSON.stringify(message));
     if (message.text) {
       if (message.text == "dino" || message.text == "Dino") {
-        let date = new Date("GMT+10:00");
-        let compareDate = new Date("05/29/2023 GMT+10:00");
+        let date = calculateTime(new Date(), 10);
+        let compareDate = calculateTime(new Date("05/29/2023"), 10);
         console.log("Date 1: " + date);
         console.log("Date 2: " + compareDate);
         console.log("Date offset: " + new Date().getTimezoneOffset() * 60 * 1000);
