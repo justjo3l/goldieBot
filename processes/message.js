@@ -20,7 +20,7 @@ export default function processMessage(event) {
         });
         console.log("Date 1: " + date);
         console.log("Date 2: " + new Date("05/29/2023"));
-        compareDate = new Date("05/29/2023").toLocaleString("en-US", {
+        let compareDate = new Date("05/29/2023").toLocaleString("en-US", {
           localeMatcher: "best fit",
           timeZoneName: "short"
         });
