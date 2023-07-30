@@ -13,7 +13,38 @@ export default function processMessage(event) {
     console.log("Received message from senderId: " + senderID);
     console.log("Message is: " + JSON.stringify(message));
     if (message.text) {
-      if (message.text.startsWith("dino") || message.text.startsWith("Dino")) {
+      if (message.text == "dino") {
+        let date = new Date();
+        let days = Math.floor((new Date(date) - new Date("05/29/2023")) / (1000 * 60 * 60 * 24));
+        days =  days % 21;
+        let reply = 'No menu found for that date.'
+
+        let time = date.getHours() * 100 + date.getMinutes();
+
+        getDinoMenu(days).then((menu) => {
+          if (menu != null) {
+            if (time > 0 && time <= 1000) {
+              reply = "BREAKFAST:\n\n"
+              reply += replaceNewLine(menu.breakfast);
+            } else if (time < 1200 && menu.brunch != "") {
+              reply = "BRUNCH:\n\n"
+              reply += replaceNewLine(menu.brunch);
+            } else if (time <= 1415) {
+              reply = "LUNCH:\n\n"
+              reply += replaceNewLine(menu.lunch);
+            } else {
+              reply = "DINNER:\n\n"
+              reply += replaceNewLine(menu.dinner) + "\n\nDESSERT:\n\n";
+              reply += replaceNewLine(menu.dessert);
+            }
+          }
+          sendMessage(senderID, {text: reply}).then(() => {
+            console.log("Dino Message sent!");
+          }).catch((err) => {
+            console.log("Dino Message error");
+          });
+        });
+      } else if (message.text.startsWith("dino") || message.text.startsWith("Dino")) {
 
         // Get date as second part of message text
         let date = message.text.split(" ")[1];
