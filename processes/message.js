@@ -26,6 +26,8 @@ export default function processMessage(event) {
 
         let time = date.getHours() * 100 + date.getMinutes();
 
+        console.log(time);
+
         getDinoMenu(days).then((menu) => {
           if (menu != null) {
             if (time > 0 && time <= 1000) {
