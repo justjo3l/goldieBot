@@ -14,6 +14,7 @@ export default function processMessage(event) {
     console.log("Message is: " + JSON.stringify(message));
     if (message.text) {
       if (message.text.startsWith("dino") || message.text.startsWith("Dino")) {
+
         // Get date as second part of message text
         let date = message.text.split(" ")[1];
         // Convert date from DD/MM/YYYY to MM/DD/YYYY
@@ -22,9 +23,26 @@ export default function processMessage(event) {
         let days = Math.floor((new Date(date) - new Date("05/29/2023")) / (1000 * 60 * 60 * 24));
         days =  days % 21;
         let reply = 'No menu found for that date.'
+
+        // Get breakfast, brunch, lunch or dinner option as third part of message text
+        let option = message.text.split(" ")[2];
+
         getDinoMenu(days).then((menu) => {
           if (menu != null) {
-            reply = replaceNewLine(menu.breakfast);
+            if (option == "breakfast" || option == "Breakfast") {
+              reply = replaceNewLine(menu.breakfast);
+            } else if (option == "brunch" || option == "Brunch") {
+              reply = replaceNewLine(menu.brunch);
+              if (menu.brunch == "") {
+                reply = "No brunch on this day."
+              }
+            } else if (option == "lunch" || option == "Lunch") {
+              reply = replaceNewLine(menu.lunch);
+            } else if (option == "dinner" || option == "Dinner") {
+              reply = replaceNewLine(menu.dinner);
+            } else {
+              reply = "Please specify breakfast, brunch, lunch or dinner."
+            }
           }
           sendMessage(senderID, {text: reply}).then(() => {
             console.log("Dino Message sent!");
