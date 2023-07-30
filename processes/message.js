@@ -8,7 +8,8 @@ function getDaysFromDate(date) {
   let compareDate = calculateTime(new Date("05/29/2023"), 10);
   let days = Math.floor((date - compareDate) / (1000 * 60 * 60 * 24));
   days =  days % 21;
-  return days;
+  let time = date.getHours() * 100 + date.getMinutes();
+  return [days, time];
 }
 
 function dinoReplyHandler(days, time, option) {
@@ -54,9 +55,10 @@ export default function processMessage(event) {
     console.log("Message is: " + JSON.stringify(message));
     if (message.text) {
       if (message.text == "dino" || message.text == "Dino") {
-        let days = getDaysFromDate(new Date());
+        let returnedDetails = getDaysFromDate(new Date());
+        let days = returnedDetails[0];
 
-        let time = date.getHours() * 100 + date.getMinutes();
+        let time = returnedDetails[1];
 
         dinoReplyHandler(days, time, "");
 
@@ -67,7 +69,7 @@ export default function processMessage(event) {
         // Convert date from DD/MM/YYYY to MM/DD/YYYY
         date = date.split("/")[1] + "/" + date.split("/")[0] + "/" + date.split("/")[2];
 
-        let days = getDaysFromDate(new Date(date));
+        let days = getDaysFromDate(new Date(date))[0];
 
         // Get breakfast, brunch, lunch or dinner option as third part of message text
         let option = message.text.split(" ")[2];
