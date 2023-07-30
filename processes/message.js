@@ -14,8 +14,8 @@ export default function processMessage(event) {
     console.log("Message is: " + JSON.stringify(message));
     if (message.text) {
       if (message.text == "dino" || message.text == "Dino") {
-        let date = new Date() + new Date.getTimezoneOffset() * 60 * 1000;
-        let compareDate = new Date("05/29/2023") + new Date.getTimezoneOffset() * 60 * 1000;
+        let date = new Date() + new Date().getTimezoneOffset() * 60 * 1000;
+        let compareDate = new Date("05/29/2023") + new Date().getTimezoneOffset() * 60 * 1000;
         console.log("Date 1: " + date);
         console.log("Date 2: " + compareDate);
         // Calculate the difference between the current date and 29/05/2023
