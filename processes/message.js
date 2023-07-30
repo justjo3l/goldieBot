@@ -25,21 +25,12 @@ export default function processMessage(event) {
       if (message.text == "dino" || message.text == "Dino") {
         let date = calculateTime(new Date(), 10);
         let compareDate = calculateTime(new Date("05/29/2023"), 10);
-        console.log("Date 1: " + date);
-        console.log("Date 2: " + compareDate);
-        console.log("Date offset: " + new Date().getTimezoneOffset() * 60 * 1000);
-        // Calculate the difference between the current date and 29/05/2023
+
         let days = Math.floor((date - compareDate) / (1000 * 60 * 60 * 24));
-        console.log("Days: " + days);
         days =  days % 21;
-        console.log("Days: " + days);
         let reply = '';
 
-        console.log("Hours: ", date.getHours());
-        console.log("Minutes: ", date.getMinutes());
         let time = date.getHours() * 100 + date.getMinutes();
-
-        console.log(time);
 
         getDinoMenu(days).then((menu) => {
           if (menu != null) {
@@ -77,8 +68,11 @@ export default function processMessage(event) {
         let date = message.text.split(" ")[1];
         // Convert date from DD/MM/YYYY to MM/DD/YYYY
         date = date.split("/")[1] + "/" + date.split("/")[0] + "/" + date.split("/")[2];
+
+        date = calculateTime(new Date(date), 10);
+        let compareDate = calculateTime(new Date("05/29/2023"), 10);
         // Get number of days since 29/05/2023
-        let days = Math.floor((new Date(date) - new Date("05/29/2023")) / (1000 * 60 * 60 * 24));
+        let days = Math.floor((date - compareDate) / (1000 * 60 * 60 * 24));
         days =  days % 21;
         let reply = ''
 
