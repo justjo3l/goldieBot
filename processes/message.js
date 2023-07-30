@@ -16,6 +16,7 @@ function dinoReplyHandler(days, time, option, senderID) {
   let reply = '';
   getDinoMenu(days).then((menu) => {
     if (menu != null) {
+      console.log(menu);
       if (option == "breakfast" || option == "Breakfast" || time > 0 && time <= 1000) {
         reply = "BREAKFAST:\n\n";
         reply += replaceNewLine(menu.breakfast);
