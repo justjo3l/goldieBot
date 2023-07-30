@@ -17,6 +17,7 @@ export default function processMessage(event) {
         let date = new Date();
         let days = Math.floor((new Date(date) - new Date("05/29/2023")) / (1000 * 60 * 60 * 24));
         days =  days % 21;
+        console.log("Days: " + days);
         let reply = '';
 
         let time = date.getHours() * 100 + date.getMinutes();
