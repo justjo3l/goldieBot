@@ -16,6 +16,8 @@ export default function processMessage(event) {
       if (message.text.startsWith("dino") || message.text.startsWith("Dino")) {
         // Get date as second part of message text
         let date = message.text.split(" ")[1];
+        // Convert date from DD/MM/YYYY to MM/DD/YYYY
+        date = date.split("/")[1] + "/" + date.split("/")[0] + "/" + date.split("/")[2];
         // Get number of days since 29/05/2023
         let days = Math.floor((new Date(date) - new Date("05/29/2023")) / (1000 * 60 * 60 * 24));
         days =  days % 21;
