@@ -30,16 +30,21 @@ export default function processMessage(event) {
         getDinoMenu(days).then((menu) => {
           if (menu != null) {
             if (option == "breakfast" || option == "Breakfast") {
-              reply = replaceNewLine(menu.breakfast);
+              reply = "BREAKFAST:\n"
+              reply += replaceNewLine(menu.breakfast);
             } else if (option == "brunch" || option == "Brunch") {
-              reply = replaceNewLine(menu.brunch);
+              reply = "BRUNCH:\n"
+              reply += replaceNewLine(menu.brunch);
               if (menu.brunch == "") {
                 reply = "No brunch on this day."
               }
             } else if (option == "lunch" || option == "Lunch") {
-              reply = replaceNewLine(menu.lunch);
+              reply = "LUNCH:\n"
+              reply += replaceNewLine(menu.lunch);
             } else if (option == "dinner" || option == "Dinner") {
-              reply = replaceNewLine(menu.dinner);
+              reply = "DINNER:\n"
+              reply += replaceNewLine(menu.dinner) + "\n";
+              reply += replaceNewLine(menu.dessert);
             } else {
               reply = "Please specify breakfast, brunch, lunch or dinner."
             }
