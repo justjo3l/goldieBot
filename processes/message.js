@@ -15,7 +15,9 @@ export default function processMessage(event) {
     if (message.text) {
       if (message.text == "dino" || message.text == "Dino") {
         let date = new Date();
+        console.log("Date: " + date);
         let days = Math.floor((new Date(date) - new Date("05/29/2023")) / (1000 * 60 * 60 * 24));
+        console.log("Days: " + days);
         days =  days % 21;
         console.log("Days: " + days);
         let reply = '';
