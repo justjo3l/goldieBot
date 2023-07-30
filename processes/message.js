@@ -24,6 +24,8 @@ export default function processMessage(event) {
         console.log("Days: " + days);
         let reply = '';
 
+        console.log("Hours: ", date.getHours());
+        console.log("Minutes: ", date.getMinutes());
         let time = date.getHours() * 100 + date.getMinutes();
 
         console.log(time);
