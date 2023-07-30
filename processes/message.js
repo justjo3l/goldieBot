@@ -12,7 +12,7 @@ function getDaysFromDate(date) {
   return [days, time];
 }
 
-function dinoReplyHandler(days, time, option) {
+function dinoReplyHandler(days, time, option, senderID) {
   let reply = '';
   getDinoMenu(days).then((menu) => {
     if (menu != null) {
@@ -31,15 +31,15 @@ function dinoReplyHandler(days, time, option) {
         reply += "\n\nDESSERT:\n\n";
         reply += replaceNewLine(menu.dessert);
       }
-      replySender(reply);
+      replySender(reply, senderID);
     }
   }).catch((err) => {
     reply = 'No menu found for that date.';
-    replySender(reply);
+    replySender(reply, senderID);
   });
 }
 
-function replySender(reply) {
+function replySender(reply, senderID) {
   sendMessage(senderID, {text: reply}).then(() => {
     console.log("Message sent!");
   }).catch((err) => {
@@ -60,7 +60,7 @@ export default function processMessage(event) {
 
         let time = returnedDetails[1];
 
-        dinoReplyHandler(days, time, "");
+        dinoReplyHandler(days, time, "", senderID);
 
       } else if (message.text.startsWith("dino") || message.text.startsWith("Dino")) {
 
@@ -74,7 +74,7 @@ export default function processMessage(event) {
         // Get breakfast, brunch, lunch or dinner option as third part of message text
         let option = message.text.split(" ")[2];
 
-        dinoReplyHandler(days, 0, option);
+        dinoReplyHandler(days, 0, option, senderID);
       } else {
         let reply = '';
 
