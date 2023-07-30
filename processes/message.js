@@ -19,10 +19,10 @@ function dinoReplyHandler(days, time, option, senderID) {
       if (option == "breakfast" || option == "Breakfast" || time > 0 && time <= 1000) {
         reply = "BREAKFAST:\n\n";
         reply += replaceNewLine(menu.breakfast);
-      } else if (option == "brunch" || option == "Brunch" || time < 1200 && menu.brunch != "") {
+      } else if (option == "brunch" || option == "Brunch" || time > 1000 && time <= 1200 && menu.brunch != "") {
         reply = "BRUNCH:\n\n";
         reply += replaceNewLine(menu.brunch);
-      } else if (option == "lunch" || option == "Lunch" || time <= 1415) {
+      } else if (option == "lunch" || option == "Lunch" || time > 1200 && time <= 1415) {
         reply = "LUNCH:\n\n";
         reply += replaceNewLine(menu.lunch);
       } else {
@@ -74,7 +74,7 @@ export default function processMessage(event) {
         // Get breakfast, brunch, lunch or dinner option as third part of message text
         let option = message.text.split(" ")[2];
 
-        dinoReplyHandler(days, 0, option, senderID);
+        dinoReplyHandler(days, -1, option, senderID);
       } else {
         let reply = '';
 
