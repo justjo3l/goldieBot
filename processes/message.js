@@ -4,7 +4,7 @@ import { getDinoMenu } from '../database.js';
 import replaceNewLine, { calculateTime } from '../util/helper.js';
 
 function getDaysFromDate(date) {
-  let date = calculateTime(new Date(date), 10);
+  date = calculateTime(new Date(date), 10);
   let compareDate = calculateTime(new Date("05/29/2023"), 10);
   let days = Math.floor((date - compareDate) / (1000 * 60 * 60 * 24));
   days =  days % 21;
