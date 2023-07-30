@@ -14,8 +14,8 @@ export default function processMessage(event) {
     console.log("Message is: " + JSON.stringify(message));
     if (message.text) {
       if (message.text == "dino" || message.text == "Dino") {
-        let date = new Date("AEDT");
-        let compareDate = new Date("05/29/2023 AEDT");
+        let date = new Date("GMT+10:00");
+        let compareDate = new Date("05/29/2023 GMT+10:00");
         console.log("Date 1: " + date);
         console.log("Date 2: " + compareDate);
         console.log("Date offset: " + new Date().getTimezoneOffset() * 60 * 1000);
