@@ -1,5 +1,6 @@
 export default function replaceNewLine(str) {
-    str.trim().replace(/\\n/g, "\n\n");
+    str = str.trim().replace(/\\n/g, "\n\n");
+    return str;
 }
 
 export function calculateTime(d, offset) {
