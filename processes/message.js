@@ -18,6 +18,7 @@ export default function processMessage(event) {
         let compareDate = new Date(new Date("05/29/2023") + new Date().getTimezoneOffset() * 60 * 1000);
         console.log("Date 1: " + date);
         console.log("Date 2: " + compareDate);
+        console.log("Date offset: " + new Date().getTimezoneOffset() * 60 * 1000);
         // Calculate the difference between the current date and 29/05/2023
         let days = Math.floor((date - compareDate) / (1000 * 60 * 60 * 24));
         console.log("Days: " + days);
