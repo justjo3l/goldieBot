@@ -20,11 +20,47 @@ This bot intends to provide Goldstein residents easy access to Dino menus, Goldi
 
     Returns a message showing the menu for a specific meal on a certain date. The Date format is DD/MM/YYY.
     
-    Acceptable inputs for meal_type are "breakfast", "brunch", "lunch" and "dinner". Any other input will automatically result in the return of dinner menu (as it is the most searched for menu).
+    Acceptable inputs for meal_type are "breakfast", "brunch", "lunch" and "dinner". Any other input will automatically result in the return of dinner menu (as it is the most searched menu).
     
     Usage example:
     ```
     dino 30/07/2023 breakfast
+    ```
+
+- ### `breakfast`
+
+    Returns a message showing the breakfast menu for the day.
+    
+    Usage example:
+    ```
+    breakfast
+    ```
+
+- ### `brunch`
+
+    Returns a message showing the brunch menu for the day.
+    
+    Usage example:
+    ```
+    brunch
+    ```
+
+- ### `lunch`
+
+    Returns a message showing the lunch menu for the day.
+    
+    Usage example:
+    ```
+    lunch
+    ```
+
+- ### `dinner`
+
+    Returns a message showing the dinner menu for the day.
+    
+    Usage example:
+    ```
+    dinner
     ```
 
 ## Other Features
