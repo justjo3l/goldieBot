@@ -9,6 +9,7 @@ import dinoOption from './dino_commands/dinoOption.js';
 
 // Function to handle dino commands
 export default function dinoTypeHandler(command, senderID) {
+  command = String(command);
   command = command.toLowerCase();
   if (command == "dino") {
     // If user sends dino, send dino menu
