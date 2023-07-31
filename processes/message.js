@@ -26,7 +26,7 @@ export default function processMessage(event) {
     console.log("Received message from senderId: " + senderID);
     console.log("Message is: " + JSON.stringify(message));
 
-    input = String(message.text);
+    let input = String(message.text);
     if (input) {
       if (getCommandType(input) == "dino") {
         // If user sends a dino command, send dino menu
