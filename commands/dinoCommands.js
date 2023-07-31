@@ -19,7 +19,7 @@ export default function dinoTypeHandler(command, senderID) {
     // If user sends dino followed by a date and option, send menu based on the date and option
     dinoStart(command, senderID);
 
-  } else if (command in ["breakfast", "brunch", "lunch", "dinner"]) {
+  } else if (["breakfast", "brunch", "lunch", "dinner"].includes(command)) {
     // If user sends option, send menu based on the option
     dinoOption(command, senderID);
 

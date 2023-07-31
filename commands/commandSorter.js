@@ -7,7 +7,7 @@ export default function getCommandType(command) {
         return "dino";
     } else if (command.startsWith("dino")) {
         return "dino";
-    } else if (command in ["breakfast", "brunch", "lunch", "dinner"]) {
+    } else if (["breakfast", "brunch", "lunch", "dinner"].includes(command)) {
         return "dino";
     } else {
         return "unknown";
