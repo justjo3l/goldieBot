@@ -24,6 +24,9 @@ export default function dinoTypeHandler(command, senderID) {
     // If user sends option, send menu based on the option
     dinoOption(command, senderID);
 
+  } else {
+    console.log(command);
+    console.log("yeah");
   }
 }
 
