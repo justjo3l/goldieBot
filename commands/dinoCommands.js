@@ -9,7 +9,7 @@ import dinoOption from './dino_commands/dinoOption.js';
 
 // Function to handle dino commands
 export default function dinoTypeHandler(command, senderID) {
-  console.log(command);
+  console.log("DINO TYPE COMMAND: ", command);
   command = String(command);
   command = command.toLowerCase();
   if (command == "dino") {
