@@ -1,7 +1,7 @@
 // FILE TO HANDLE DINO COMMAND WITH DATE AND OPTION
 
 import { getDaysFromDate } from "../../util/helper.js";
-import dinoReplyHandler from "../dinoCommands.js";
+import { dinoReplyHandler } from "../dinoCommands.js";
 
 export default function dinoOption(option, senderID) {
     let returnedDetails = getDaysFromDate(new Date());

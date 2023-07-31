@@ -1,7 +1,7 @@
 // FILE TO HANDLE OPTION COMMAND
 
 import { getDaysFromDate } from "../../util/helper.js";
-import dinoReplyHandler from "../dinoCommands.js";
+import { dinoReplyHandler } from "../dinoCommands.js";
 
 export default function dinoStart(command, senderID) {
     let time = -1;
