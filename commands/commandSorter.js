@@ -1,11 +1,12 @@
 // FILE TO HANDLE COMMAND TYPE SORTING
 
 export default function getCommandType(command) {
-    if (command.toLowerCase() == "dino") {
+    command = command.toLowerCase();
+    if (command == "dino") {
         return "dino";
-    } else if (command.toLowerCase().startsWith("dino")) {
+    } else if (command.startsWith("dino")) {
         return "dino";
-    } else if (command.toLowerCase() in ["breakfast", "brunch", "lunch", "dinner"]) {
+    } else if (command in ["breakfast", "brunch", "lunch", "dinner"]) {
         return "dino";
     } else {
         return "unknown";
