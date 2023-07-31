@@ -26,14 +26,15 @@ export default function processMessage(event) {
     console.log("Received message from senderId: " + senderID);
     console.log("Message is: " + JSON.stringify(message));
 
-    if (message.text) {
-      if (getCommandType(message.text) == "dino") {
+    input = String(message.text);
+    if (input) {
+      if (getCommandType(input) == "dino") {
         // If user sends a dino command, send dino menu
-        dinoTypeHandler(message.text, senderID);
+        dinoTypeHandler(input, senderID);
 
-      } else if (getCommandType(message.text) == "unknown") {
+      } else if (getCommandType(input) == "unknown") {
         // If user sends an unknown command, send a fixed reply
-        unknown(message.text, senderID);
+        unknown(input, senderID);
 
       }
     }
