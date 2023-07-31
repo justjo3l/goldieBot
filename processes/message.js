@@ -7,6 +7,7 @@ import unknown from '../commands/unknown_commands/unknown.js';
 
 // Function to send a message to the sender
 export function replySender(reply, senderID) {
+  console.log("Reply: ", reply);
   sendMessage(senderID, {text: reply}).then(() => {
 
     // Logs success case if message is sent
