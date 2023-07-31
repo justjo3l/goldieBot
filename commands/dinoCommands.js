@@ -14,14 +14,17 @@ export default function dinoTypeHandler(command, senderID) {
   command = command.toLowerCase();
   if (command == "dino") {
     // If user sends dino, send dino menu
+    console.log("dino command run!");
     dino(senderID);
 
   } else if (command.startsWith("dino")) {
     // If user sends dino followed by a date and option, send menu based on the date and option
+    console.log("dino start command run!");
     dinoStart(command, senderID);
 
   } else if (["breakfast", "brunch", "lunch", "dinner"].includes(command)) {
     // If user sends option, send menu based on the option
+    console.log("dino option command run!");
     dinoOption(command, senderID);
 
   } else {
