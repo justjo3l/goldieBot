@@ -9,27 +9,20 @@ import dinoOption from './dino_commands/dinoOption.js';
 
 // Function to handle dino commands
 export default function dinoTypeHandler(command, senderID) {
-  console.log("DINO TYPE COMMAND: ", command);
   command = String(command);
   command = command.toLowerCase();
   if (command == "dino") {
     // If user sends dino, send dino menu
-    console.log("dino command run!");
     dino(senderID);
 
   } else if (command.startsWith("dino")) {
     // If user sends dino followed by a date and option, send menu based on the date and option
-    console.log("dino start command run!");
     dinoStart(command, senderID);
 
   } else if (["breakfast", "brunch", "lunch", "dinner"].includes(command)) {
     // If user sends option, send menu based on the option
-    console.log("dino option command run!");
     dinoOption(command, senderID);
 
-  } else {
-    console.log(command);
-    console.log("yeah");
   }
 }
 
@@ -37,49 +30,38 @@ export default function dinoTypeHandler(command, senderID) {
 // Function to handle dino menu replies
 export function dinoReplyHandler(days, time, option, senderID) {
     let reply = '';
-
-    console.log("Days: ", days);
-    console.log("Time: ", time);
-    console.log("Option: ", option);
   
     // Gets dino menu based on the days
     getDinoMenu(days).then((menu) => {
       if (menu != null) {
         if ((option == "brunch" || option == "Brunch") && menu.brunch == "") {
           // Sends empty brunch menu if option is brunch and brunch menu is empty
-          console.log("brunch empty");
           reply = "BRUNCH:\n\n";
           reply += "No brunch menu for today.";
 
         } else if (option == "breakfast" || option == "Breakfast" || time > 0 && time <= 1000) {
           // Sends breakfast menu if option is breakfast or if time is between 0000 and 1000
-          console.log("breakfast");
           reply = "BREAKFAST:\n\n";
           reply += replaceNewLine(menu.breakfast);
 
         } else if ((option == "brunch" || option == "Brunch" || time > 1000 && time <= 1200) && menu.brunch != "") {
           // Sends brunch menu if option is brunch or if time is between 1000 and 1200 and brunch menu is not empty
-          console.log("brunch");
           reply = "BRUNCH:\n\n";
           reply += replaceNewLine(menu.brunch);
 
         } else if (option == "lunch" || option == "Lunch" || time > 1200 && time <= 1415) {
           // Sends lunch menu if option is lunch or if time is between 1200 and 1415
-          console.log("lunch");
           reply = "LUNCH:\n\n";
           reply += replaceNewLine(menu.lunch);
 
         } else {
           // Sends dinner and dessert menu if option is anything else or if time is between 1415 and 2359
-          console.log("dinner");
           reply = "DINNER:\n\n";
           reply += replaceNewLine(menu.dinner);
           reply += "\n\nDESSERT:\n\n";
           reply += replaceNewLine(menu.dessert);
 
         }
-
-        console.log("REPLY SENT?");
   
         // Sends reply to user
         replySender(reply, senderID);
@@ -87,8 +69,6 @@ export function dinoReplyHandler(days, time, option, senderID) {
     }).catch((err) => {
       // Handles error case when no menu was found for date, which should ideally never be a case :)
       reply = 'No menu found for that date.';
-
-      console.log("Reply not sent");
   
       // Sends reply to user
       replySender(reply, senderID);

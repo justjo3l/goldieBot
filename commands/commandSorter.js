@@ -1,7 +1,6 @@
 // FILE TO HANDLE COMMAND TYPE SORTING
 
 export default function getCommandType(command) {
-    console.log("TYPE COMMAND: ", command);
     command = String(command);
     command = command.toLowerCase();
     if (command == "dino") {
