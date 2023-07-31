@@ -12,7 +12,11 @@ function dinoReplyHandler(days, time, option, senderID) {
   // Gets dino menu based on the days
   getDinoMenu(days).then((menu) => {
     if (menu != null) {
-      if (option == "breakfast" || option == "Breakfast" || time > 0 && time <= 1000) {
+      if (option == "brunch" && menu.brunch == "") {
+        // Sends empty brunch menu if option is brunch and brunch menu is empty
+        reply = "BRUNCH:\n\n";
+        reply += "No brunch menu for today.";
+      } else if (option == "breakfast" || option == "Breakfast" || time > 0 && time <= 1000) {
         // Sends breakfast menu if option is breakfast or if time is between 0000 and 1000
         reply = "BREAKFAST:\n\n";
         reply += replaceNewLine(menu.breakfast);
@@ -65,14 +69,20 @@ export default function processMessage(event) {
     console.log("Received message from senderId: " + senderID);
     console.log("Message is: " + JSON.stringify(message));
     if (message.text) {
+
+      let returnedDetails = getDaysFromDate(new Date());
+      let days = returnedDetails[0];
+
+      let time = -1;
+
+      let option = "";
+
       if (message.text == "dino" || message.text == "Dino") {
+
+        time = returnedDetails[1];
+
         // If user sends "dino" or "Dino", send menu for today at nearest time
-        let returnedDetails = getDaysFromDate(new Date());
-        let days = returnedDetails[0];
-
-        let time = returnedDetails[1];
-
-        dinoReplyHandler(days, time, "", senderID);
+        dinoReplyHandler(days, time, option, senderID);
 
       } else if (message.text.startsWith("dino") || message.text.startsWith("Dino")) {
         // If user sends "dino" or "Dino" with a date and option, send menu for that date and option
@@ -84,12 +94,33 @@ export default function processMessage(event) {
         date = date.split("/")[1] + "/" + date.split("/")[0] + "/" + date.split("/")[2];
 
         // Get days from 29/05/2023
-        let days = getDaysFromDate(new Date(date))[0];
+        days = getDaysFromDate(new Date(date))[0];
 
         // Get breakfast, brunch, lunch or dinner option as third part of message text
-        let option = message.text.split(" ")[2];
+        option = message.text.split(" ")[2];
 
-        dinoReplyHandler(days, -1, option, senderID);
+        dinoReplyHandler(days, time, option, senderID);
+
+      } else if (message.text == "breakfast" || message.text == "Breakfast") {
+        // If user sends "breakfast" or "Breakfast", send breakfast menu for today
+
+        dinoReplyHandler(days, time, "breakfast", senderID);
+
+      } else if (message.text == "brunch" || message.text == "Brunch") {
+        // If user sends "brunch" or "Brunch", send brunch menu for today
+
+        dinoReplyHandler(days, time, "brunch", senderID);
+
+      } else if (message.text == "lunch" || message.text == "Lunch") {
+        // If user sends "lunch" or "Lunch", send lunch menu for today
+
+        dinoReplyHandler(days, time, "lunch", senderID);
+
+      } else if (message.text == "dinner" || message.text == "Dinner") {
+        // If user sends "dinner" or "Dinner", send dinner and dessert menu for today
+
+        dinoReplyHandler(days, time, "dinner", senderID);
+
       } else {
         // If user sends anything else, send a fixed reply
         let reply = '';
