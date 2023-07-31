@@ -1,3 +1,6 @@
+// FILE TO HANDLE POSTBACK PROCESSING
+// NOT PROPERLY IMPLEMENTED YET
+
 import request from 'request';
 import senderAction from '../templates/senderAction.js';
 import sendMessage from '../templates/sendMessage.js';

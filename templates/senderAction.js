@@ -1,3 +1,6 @@
+// FILE TO HANDLE SENDER ACTION
+// NOT PROPERLY IMPLEMENTED YET
+
 import request from "request";
 export default function senderAction(recipientId){
 request({
