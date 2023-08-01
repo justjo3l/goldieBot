@@ -3,6 +3,9 @@
 import { replySender } from "../../processes/message.js";
 import getItems from "../../routes/square.js";
 
+const goldieMerchCode = "CM6H2S35JFUKXEZPW5SUFVVF";
+const goldieEventCode = "5J4KVM73SLYED3XP5MS4PJRY";
+
 export default function shop(senderID) {
 
     let reply = "";
@@ -13,7 +16,8 @@ export default function shop(senderID) {
         items.forEach((item, index) => {
             if (index < 30) {
                 let location_overrides = item.item_data.variations[0].item_variation_data.location_overrides;
-                if (location_overrides) {
+                let category = item.item_data.category_id;
+                if (location_overrides && !(category in [goldieMerchCode, goldieEventCode])) {
                     let isSoldOut = location_overrides[0].is_sold_out;
                     if (isSoldOut) {
                     } else {
