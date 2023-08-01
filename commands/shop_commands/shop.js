@@ -14,6 +14,8 @@ export default function shop(senderID) {
             let itemName = item.item_data.name;
             let itemPrice = String(item.item_data.variations[0].item_variation_data.price_money.amount);
             itemPrice = itemPrice.slice(0, 1) + "." + itemPrice.slice(1);
+            console.log(itemName);
+            console.log(itemPrice);
             reply += itemName + " - $" + itemPrice + "\n";
         });
     
