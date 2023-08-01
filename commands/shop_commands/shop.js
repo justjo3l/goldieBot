@@ -12,8 +12,7 @@ export default function shop(senderID) {
 
         items.forEach((item) => {
             let itemName = item.item_data.name;
-            let itemPrice = item.item_data.variations[0].item_variation_data.price_money.amount;
-            console.log(itemPrice);
+            let itemPrice = String(item.item_data.variations[0].item_variation_data.price_money.amount);
             itemPrice = itemPrice.slice(0, 1) + "." + itemPrice.slice(1);
             console.log(itemPrice);
             reply += itemName + " - $" + itemPrice + "\n";
