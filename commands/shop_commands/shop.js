@@ -17,8 +17,7 @@ export default function shop(senderID) {
             if (index < 30) {
                 let location_overrides = item.item_data.variations[0].item_variation_data.location_overrides;
                 let category = item.item_data.category_id;
-                console.log(category);
-                if (location_overrides && !(category in [goldieMerchCode, goldieEventCode])) {
+                if (location_overrides && !([goldieMerchCode, goldieEventCode].includes(category))) {
                     let isSoldOut = location_overrides[0].is_sold_out;
                     if (isSoldOut) {
                     } else {
