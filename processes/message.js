@@ -3,6 +3,7 @@
 import sendMessage from '../templates/sendMessage.js';
 import getCommandType from '../commands/commandSorter.js';
 import dinoTypeHandler from '../commands/dinoCommands.js';
+import shopTypeHandler from '../commands/shopCommands.js';
 import unknown from '../commands/unknown_commands/unknown.js';
 
 // Function to send a message to the sender
@@ -31,6 +32,10 @@ export default function processMessage(event) {
       if (getCommandType(input) == "dino") {
         // If user sends a dino command, send dino menu
         dinoTypeHandler(input, senderID);
+
+      } else if (getCommandType(input) == "shop") {
+        // If user sends a shop command, send shop items
+        shopTypeHandler(input, senderID);
 
       } else if (getCommandType(input) == "unknown") {
         // If user sends an unknown command, send a fixed reply

@@ -9,6 +9,8 @@ export default function getCommandType(command) {
         return "dino";
     } else if (["breakfast", "brunch", "lunch", "dinner"].includes(command)) {
         return "dino";
+    } else if (command == "shop") {
+        return "shop";
     } else {
         return "unknown";
     }
