@@ -30,6 +30,7 @@ export default function shop(senderID) {
     
         replySender(reply, senderID);
     }).catch((err) => {
+        console.log(err);
         reply = "There was an error getting the shop items. Please try again later.";
         replySender(reply, senderID);
     });
