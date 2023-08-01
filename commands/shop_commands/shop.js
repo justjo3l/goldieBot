@@ -11,7 +11,7 @@ export default function shop(senderID) {
         reply = "SHOP ITEMS:\n\n";
 
         items.forEach((item, index) => {
-            if (index < 20) {
+            if (index < 30) {
                 let isSoldOut = item.item_data.variations[0].item_variation_data.location_overrides[0].sold_out;
                 if (isSoldOut) {
                 } else {
