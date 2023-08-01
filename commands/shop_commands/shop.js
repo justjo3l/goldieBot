@@ -12,7 +12,7 @@ export default function shop(senderID) {
 
         items.forEach((item, index) => {
             if (index < 20) {
-                let isSoldOut = item.item_data.variations[0].location_overrides[0].sold_out;
+                let isSoldOut = item.item_data.variations[0].item_variation_data.location_overrides[0].sold_out;
                 if (isSoldOut) {
                 } else {
                     let itemName = item.item_data.name;
