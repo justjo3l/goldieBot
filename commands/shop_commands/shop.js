@@ -12,15 +12,19 @@ export default function shop(senderID) {
 
         items.forEach((item, index) => {
             if (index < 20) {
-                let itemName = item.item_data.name;
-                let itemPrice = String(item.item_data.variations[0].item_variation_data.price_money.amount);
-                itemPrice = itemPrice.slice(0, (itemPrice.length - 2)) + "." + itemPrice.slice((itemPrice.length - 2));
-                if (itemPrice[0] == ".") {
-                    itemPrice = "0" + itemPrice;
+                let isSoldOut = item.item_data.variations[0].location_overrides[0].sold_out;
+                if (isSoldOut) {
+                } else {
+                    let itemName = item.item_data.name;
+                    let itemPrice = String(item.item_data.variations[0].item_variation_data.price_money.amount);
+                    itemPrice = itemPrice.slice(0, (itemPrice.length - 2)) + "." + itemPrice.slice((itemPrice.length - 2));
+                    if (itemPrice[0] == ".") {
+                        itemPrice = "0" + itemPrice;
+                    }
+                    console.log(itemName);
+                    console.log(itemPrice);
+                    reply += itemName + " - $" + itemPrice + "\n";
                 }
-                console.log(itemName);
-                console.log(itemPrice);
-                reply += itemName + " - $" + itemPrice + "\n";
             }
         });
     
