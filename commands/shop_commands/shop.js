@@ -11,8 +11,7 @@ export default function shop(senderID) {
         reply = "SHOP ITEMS:\n\n";
 
         items.forEach((item) => {
-            console.log(item);
-            reply += item.name + " - $" + item.price + "\n";
+            reply += item.item_data.name + " - $" + item.item_data.price + "\n";
         });
     
         replySender(reply, senderID);
