@@ -7,7 +7,7 @@ export default function shop(senderID) {
 
     let reply = "";
 
-    getItems(true).then((items) => {
+    getItems().then((items) => {
         reply = "SHOP ITEMS:\n\n";
 
         items.forEach((item) => {
