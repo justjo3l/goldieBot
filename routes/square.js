@@ -6,7 +6,7 @@ const client = new Client({
 });
 
 export default function getItems() {
-    return newPromise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
         client.catalogApi.listCatalog(undefined, 'item').then((response) => {
             // Returns all objects in response body
             let objects = JSON.parse(response.body).objects;

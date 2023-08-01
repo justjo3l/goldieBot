@@ -5,12 +5,18 @@ import getItems from "../../routes/square.js";
 
 export default function shop(senderID) {
 
-    let items = getItems();
-    let reply = "SHOP ITEMS:\n\n";
+    let reply = "";
 
-    items.forEach((item) => {
-        reply += item.name + " - $" + item.price + "\n";
+    getItems().then((items) => {
+        reply = "SHOP ITEMS:\n\n";
+
+        items.forEach((item) => {
+            reply += item.name + " - $" + item.price + "\n";
+        });
+    
+        replySender(reply, senderID);
+    }).catch((err) => {
+        reply = "There was an error getting the shop items. Please try again later.";
+        replySender(reply, senderID);
     });
-
-    replySender(reply, senderID);
 }
