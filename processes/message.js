@@ -5,6 +5,7 @@ import getCommandType from '../commands/commandSorter.js';
 import dinoTypeHandler from '../commands/dinoCommands.js';
 import shopTypeHandler from '../commands/shopCommands.js';
 import unknown from '../commands/unknown_commands/unknown.js';
+import error from '../commands/error_commands/error.js';
 
 // Function to send a message to the sender
 export function replySender(reply, senderID) {
@@ -46,7 +47,7 @@ export default function processMessage(event) {
       }
     } else {
       // If user sends a non-text message, send a fixed reply
-      unknown("What is that?", senderID);
+      error("What is that?", senderID);
     }
   }
 }
