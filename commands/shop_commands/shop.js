@@ -2,9 +2,7 @@
 
 import { replySender } from "../../processes/message.js";
 import getItems from "../../routes/square.js";
-
-const goldieMerchCode = "CM6H2S35JFUKXEZPW5SUFVVF";
-const goldieEventCode = "5J4KVM73SLYED3XP5MS4PJRY";
+import { ignoreCategories } from "../../data/shop_data.js";
 
 export default function shop(senderID) {
 
@@ -16,10 +14,10 @@ export default function shop(senderID) {
         let printIndex = 1;
 
         items.forEach((item) => {
-            if (printIndex % 20 != 0) {
+            if (printIndex % 10 != 0) {
                 let location_overrides = item.item_data.variations[0].item_variation_data.location_overrides;
                 let category = item.item_data.category_id;
-                if (location_overrides && !([goldieMerchCode, goldieEventCode].includes(category))) {
+                if (location_overrides && !(ignoreCategories.includes(category))) {
                     let isSoldOut = location_overrides[0].sold_out;
                     if (isSoldOut && isSoldOut == true) {
                     } else {
