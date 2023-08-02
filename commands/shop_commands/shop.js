@@ -18,10 +18,8 @@ export default function shop(senderID) {
                 let location_overrides = item.item_data.variations[0].item_variation_data.location_overrides;
                 let category = item.item_data.category_id;
                 if (location_overrides && !([goldieMerchCode, goldieEventCode].includes(category))) {
-                    let isSoldOut = location_overrides[0].is_sold_out;
-                    console.log("Item: ", item.item_data.name);
-                    console.log("Sold out?: ", isSoldOut);
-                    if (isSoldOut) {
+                    let isSoldOut = location_overrides[0].sold_out;
+                    if (isSoldOut == undefined && isSoldOut == true) {
                     } else {
                         let itemName = item.item_data.name;
                         let itemPrice = String(item.item_data.variations[0].item_variation_data.price_money.amount);
