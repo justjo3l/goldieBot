@@ -14,7 +14,7 @@ export default function shop(senderID) {
         reply = "SHOP ITEMS:\n\n";
 
         items.forEach((item, index) => {
-            if (index < 30) {
+            if (index != 0 && index % 20 != 0) {
                 let location_overrides = item.item_data.variations[0].item_variation_data.location_overrides;
                 let category = item.item_data.category_id;
                 if (location_overrides && !([goldieMerchCode, goldieEventCode].includes(category))) {
@@ -23,17 +23,24 @@ export default function shop(senderID) {
                     } else {
                         let itemName = item.item_data.name;
                         let itemPrice = String(item.item_data.variations[0].item_variation_data.price_money.amount);
+                        let itemIndex = index + 1;
                         itemPrice = itemPrice.slice(0, (itemPrice.length - 2)) + "." + itemPrice.slice((itemPrice.length - 2));
                         if (itemPrice[0] == ".") {
                             itemPrice = "0" + itemPrice;
                         }
-                        reply += itemName + " - $" + itemPrice + "\n";
+                        reply += itemIndex + ". " + itemName + " - $" + itemPrice + "\n";
                     }
                 }
+            } else {
+                replySender(reply, senderID);
+                reply = "";
             }
         });
-    
-        replySender(reply, senderID);
+
+        if (reply != "") {
+            replySender(reply, senderID);
+        }
+
     }).catch((err) => {
         console.log(err);
         reply = "There was an error getting the shop items. Please try again later.";
