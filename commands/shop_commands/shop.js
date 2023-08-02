@@ -13,6 +13,8 @@ export default function shop(senderID) {
     getItems().then((items) => {
         reply = "SHOP ITEMS:\n\n";
 
+        let printIndex = 1;
+
         items.forEach((item, index) => {
             if (index != 0 && index % 20 != 0) {
                 let location_overrides = item.item_data.variations[0].item_variation_data.location_overrides;
@@ -23,12 +25,12 @@ export default function shop(senderID) {
                     } else {
                         let itemName = item.item_data.name;
                         let itemPrice = String(item.item_data.variations[0].item_variation_data.price_money.amount);
-                        let itemIndex = index + 1;
                         itemPrice = itemPrice.slice(0, (itemPrice.length - 2)) + "." + itemPrice.slice((itemPrice.length - 2));
                         if (itemPrice[0] == ".") {
                             itemPrice = "0" + itemPrice;
                         }
-                        reply += itemIndex + ". " + itemName + " - $" + itemPrice + "\n";
+                        reply += printIndex + ". " + itemName + " - $" + itemPrice + "\n";
+                        printIndex += 1;
                     }
                 }
             } else {
