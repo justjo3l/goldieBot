@@ -15,8 +15,8 @@ export default function shop(senderID) {
 
         let printIndex = 1;
 
-        items.forEach((item, index) => {
-            if (index != 0 && index % 20 != 0) {
+        items.forEach((item) => {
+            if (printIndex % 20 != 0) {
                 let location_overrides = item.item_data.variations[0].item_variation_data.location_overrides;
                 let category = item.item_data.category_id;
                 if (location_overrides && !([goldieMerchCode, goldieEventCode].includes(category))) {
