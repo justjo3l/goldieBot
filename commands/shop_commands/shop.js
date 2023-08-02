@@ -14,26 +14,25 @@ export default function shop(senderID) {
         let printIndex = 1;
 
         items.forEach((item) => {
-            if (printIndex % 10 != 0) {
-                let location_overrides = item.item_data.variations[0].item_variation_data.location_overrides;
-                let category = item.item_data.category_id;
-                if (location_overrides && !(ignoreCategories.includes(category))) {
-                    let isSoldOut = location_overrides[0].sold_out;
-                    if (isSoldOut && isSoldOut == true) {
-                    } else {
-                        let itemName = item.item_data.name;
-                        let itemPrice = String(item.item_data.variations[0].item_variation_data.price_money.amount);
-                        itemPrice = itemPrice.slice(0, (itemPrice.length - 2)) + "." + itemPrice.slice((itemPrice.length - 2));
-                        if (itemPrice[0] == ".") {
-                            itemPrice = "0" + itemPrice;
-                        }
-                        reply += printIndex + ". " + itemName + " - $" + itemPrice + "\n";
-                        printIndex += 1;
+            let location_overrides = item.item_data.variations[0].item_variation_data.location_overrides;
+            let category = item.item_data.category_id;
+            if (location_overrides && !(ignoreCategories.includes(category))) {
+                let isSoldOut = location_overrides[0].sold_out;
+                if (isSoldOut && isSoldOut == true) {
+                } else {
+                    let itemName = item.item_data.name;
+                    let itemPrice = String(item.item_data.variations[0].item_variation_data.price_money.amount);
+                    itemPrice = itemPrice.slice(0, (itemPrice.length - 2)) + "." + itemPrice.slice((itemPrice.length - 2));
+                    if (itemPrice[0] == ".") {
+                        itemPrice = "0" + itemPrice;
                     }
+                    reply += printIndex + ". " + itemName + " - $" + itemPrice + "\n";
+                    printIndex += 1;
                 }
-            } else {
-                replySender(reply, senderID);
-                reply = "";
+                if (printIndex % 10 == 0) {
+                    replySender(reply, senderID);
+                    reply = "";
+                }
             }
         });
 
