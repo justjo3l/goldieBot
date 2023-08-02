@@ -3,16 +3,15 @@
 import { replySender } from "../../processes/message.js";
 import getItems from "../../routes/square.js";
 import { ignoreCategories } from "../../data/shop_data.js";
-import { wait } from "../../util/helper.js";
 
-export default function shop(senderID) {
+export default function shop(senderID, page=0) {
 
     let reply = "";
 
     getItems().then((items) => {
         reply = "SHOP ITEMS:\n\n";
 
-        let printIndex = 1;
+        let index = (20 * page) + 1;
 
         items.forEach((item) => {
             let location_overrides = item.item_data.variations[0].item_variation_data.location_overrides;
@@ -27,20 +26,12 @@ export default function shop(senderID) {
                     if (itemPrice[0] == ".") {
                         itemPrice = "0" + itemPrice;
                     }
-                    reply += printIndex + ". " + itemName + " - $" + itemPrice + "\n";
-                    printIndex += 1;
-                }
-                if (printIndex % 10 == 0) {
-                    replySender(reply, senderID);
-                    wait(2000);
-                    reply = "";
+                    reply += itemName + " - $" + itemPrice + "\n";
+                    index += 1;
                 }
             }
         });
-
-        if (reply != "") {
-            replySender(reply, senderID);
-        }
+        replySender(reply, senderID);
 
     }).catch((err) => {
         console.log(err);

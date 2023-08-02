@@ -29,7 +29,7 @@ export default function shopStart(command, senderID) {
                 }
                 reply += "\n"
                 printIndex += 1;
-                if (printIndex % 10 == 0) {
+                if (printIndex != 1 && printIndex - 1 % 10 == 0) {
                     replySender(reply, senderID);
                     reply = "";
                 }

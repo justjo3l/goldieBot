@@ -1,6 +1,7 @@
 // FILE TO HANDLE SHOP COMMANDS
 
 import shop from './shop_commands/shop.js';
+import shopPage from './shop_commands/shopPage.js';
 import shopStart from './shop_commands/shopStart.js';
 
 // Function to handle shop commands
@@ -12,8 +13,12 @@ export default function shopTypeHandler(command, senderID) {
     shop(senderID);
 
   } else if (command.startsWith("shop")) {
-    // If user sends shop with an item name, send shop item info
-    shopStart(command, senderID);
+    if (command.split(" ").length > 1 && !isNaN(command.split(" "))) {
+      shopPage(command, senderID);
+    } else {
+      // If user sends shop with an item name, send shop item info
+      shopStart(command, senderID);
+    }
 
   }
 }
