@@ -11,7 +11,7 @@ export default function shopStart(command, senderID) {
     let printIndex = 1;
 
     getItemBasedOnText(itemName).then((items) => {
-        reply = "Information regarding " + itemName + ":\n\n";
+        reply = "'" + itemName + "' in Shop:\n\n";
 
         items.forEach((item) => {
             let location_overrides = item.item_data.variations[0].item_variation_data.location_overrides;
@@ -25,8 +25,9 @@ export default function shopStart(command, senderID) {
                 reply += itemName + " - $" + itemPrice + "\n";
                 let isSoldOut = location_overrides[0].sold_out;
                 if (isSoldOut && isSoldOut == true) {
-                    reply += "This item is currently sold out.\n\n";
+                    reply += "This item is currently sold out.\n";
                 }
+                reply += "\n"
                 printIndex += 1;
                 if (printIndex % 10 == 0) {
                     replySender(reply, senderID);

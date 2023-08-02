@@ -35,3 +35,14 @@ export function getDaysFromDate(date) {
     // Returns array of days and time
     return [days, time];
 }
+
+function sleep(ms) {
+    return new Promise((resolve) => setInterval(resolve, ms));
+    
+}
+
+export async function wait(ms) {
+    console.log('Waiting for ' + String(ms) + 'ms...');
+    await sleep(ms);
+    console.log(String(ms) + 'ms have passed.');
+}

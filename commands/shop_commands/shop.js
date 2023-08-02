@@ -3,6 +3,7 @@
 import { replySender } from "../../processes/message.js";
 import getItems from "../../routes/square.js";
 import { ignoreCategories } from "../../data/shop_data.js";
+import { wait } from "../../util/helper.js";
 
 export default function shop(senderID) {
 
@@ -31,6 +32,7 @@ export default function shop(senderID) {
                 }
                 if (printIndex % 10 == 0) {
                     replySender(reply, senderID);
+                    wait(2000);
                     reply = "";
                 }
             }
