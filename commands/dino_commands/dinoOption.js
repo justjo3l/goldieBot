@@ -1,12 +1,17 @@
-// FILE TO HANDLE DINO COMMAND WITH DATE AND OPTION
+// FILE TO HANDLE DINO COMMAND WITH OPTION
 
-import { getDaysFromDate } from "../../util/helper.js";
-import { dinoReplyHandler } from "../dinoCommands.js";
+import {getDaysFromDate} from '../../util/helper.js';
+import {dinoReplyHandler} from '../dinoCommands.js';
 
+/**
+ * Function to handle the dino command with option
+ * @param {*} option
+ * @param {*} senderID
+ */
 export default function dinoOption(option, senderID) {
-    let returnedDetails = getDaysFromDate(new Date());
-    let days = returnedDetails[0];
-    let time = -1;
+  const returnedDetails = getDaysFromDate(new Date());
+  const days = returnedDetails[0];
+  const time = -1;
 
-    dinoReplyHandler(days, time, option, senderID);
+  dinoReplyHandler(days, time, option, senderID);
 }

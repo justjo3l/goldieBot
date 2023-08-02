@@ -14,7 +14,7 @@ app.set('port', (process.env.PORT || 3000));
 
 // Sets up application middleware
 app.use(morgan('dev'));
-app.use(bodyParser.urlencoded({ extended:false }));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 // Handles webhook verification through routes

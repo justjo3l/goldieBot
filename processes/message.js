@@ -7,47 +7,49 @@ import shopTypeHandler from '../commands/shopCommands.js';
 import unknown from '../commands/unknown_commands/unknown.js';
 import error from '../commands/error_commands/error.js';
 
-// Function to send a message to the sender
+/**
+ * Function to send a message to the sender
+ * @param {*} reply
+ * @param {*} senderID
+ */
 export function replySender(reply, senderID) {
   sendMessage(senderID, {text: reply}).then(() => {
-
     // Logs success case if message is sent
-    console.log("Message sent!");
+    console.log('Message sent!');
   }).catch((err) => {
-
     // Logs error case if message sending fails
-    console.log("Message error");
+    console.log('Message error');
   });
 }
 
-// Function to handle message sending
+/**
+ * Function to handle message sending
+ * @param {*} event
+ */
 export default function processMessage(event) {
   if (!event.message.is_echo) {
     const message = event.message;
     const senderID = event.sender.id;
-    console.log("Received message from senderId: " + senderID);
-    console.log("Message is: " + JSON.stringify(message));
+    console.log('Received message from senderId: ' + senderID);
+    console.log('Message is: ' + JSON.stringify(message));
 
     if (message.text) {
-      let input = message.text.trim();
+      const input = message.text.trim();
       if (input) {
-        if (getCommandType(input) == "dino") {
+        if (getCommandType(input) == 'dino') {
           // If user sends a dino command, send dino menu
           dinoTypeHandler(input, senderID);
-
-        } else if (getCommandType(input) == "shop") {
+        } else if (getCommandType(input) == 'shop') {
           // If user sends a shop command, send shop items
           shopTypeHandler(input, senderID);
-
-        } else if (getCommandType(input) == "unknown") {
+        } else if (getCommandType(input) == 'unknown') {
           // If user sends an unknown command, send a fixed reply
           unknown(input, senderID);
-
         }
       }
     } else {
       // If user sends a non-text message, send a fixed reply
-      error("What is that?", senderID);
+      error('What is that?', senderID);
     }
   }
 }
