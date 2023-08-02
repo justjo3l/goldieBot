@@ -19,6 +19,7 @@ export default function shop(senderID) {
                 let category = item.item_data.category_id;
                 if (location_overrides && !([goldieMerchCode, goldieEventCode].includes(category))) {
                     let isSoldOut = location_overrides[0].sold_out;
+                    console.log("Item:", item.item_data.name, "Sold Out:", isSoldOut);
                     if (isSoldOut == undefined && isSoldOut == true) {
                     } else {
                         let itemName = item.item_data.name;
