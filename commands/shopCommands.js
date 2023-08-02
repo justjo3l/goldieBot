@@ -10,5 +10,9 @@ export default function shopTypeHandler(command, senderID) {
     // If user sends shop, send shop items
     shop(senderID);
 
+  } else if (command.startsWith("shop")) {
+    // If user sends shop with an item name, send shop item info
+    shopStart(command, senderID);
+
   }
 }
