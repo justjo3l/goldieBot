@@ -1,9 +1,22 @@
 // FILE TO HANDLE DATABASE OPERATIONS
 
+import {initializeApp} from 'firebase/app';
 import {getFirestore} from 'firebase/firestore';
 import {collection, getDocs} from 'firebase/firestore';
 
 import 'firebase/firestore';
+
+const firebaseConfig = {
+  apiKey: 'AIzaSyBYrSK250z2pjM1vhpCdW0BuxWsspObHEQ',
+  authDomain: 'goldie-bot.firebaseapp.com',
+  projectId: 'goldie-bot',
+  storageBucket: 'goldie-bot.appspot.com',
+  messagingSenderId: '410764647615',
+  appId: '1:410764647615:web:a01cbc855c7b8e6d03fa0a',
+};
+
+// Initialize Firebase App for later use
+const app = initializeApp(firebaseConfig);
 
 // Gets the Firestore database instance
 const db = getFirestore();
@@ -34,7 +47,7 @@ export default function getDinoMenus() {
         resolve(dinoMenus);
       } else {
         // Rejects promise if dinoMenus is null
-        reject(Error('No dino menus found.'));
+        reject(null);
       }
     });
   });
@@ -70,7 +83,7 @@ export function getDinoMenu(index) {
         resolve(dinoMenu);
       } else {
         // Rejects promise if dinoMenu is null
-        reject(Error('No dino menu found.'));
+        reject(null);
       }
     });
   });
