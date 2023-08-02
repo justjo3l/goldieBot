@@ -27,21 +27,26 @@ export default function processMessage(event) {
     console.log("Received message from senderId: " + senderID);
     console.log("Message is: " + JSON.stringify(message));
 
-    let input = message.text.trim();
-    if (input) {
-      if (getCommandType(input) == "dino") {
-        // If user sends a dino command, send dino menu
-        dinoTypeHandler(input, senderID);
+    if (message.text) {
+      let input = message.text.trim();
+      if (input) {
+        if (getCommandType(input) == "dino") {
+          // If user sends a dino command, send dino menu
+          dinoTypeHandler(input, senderID);
 
-      } else if (getCommandType(input) == "shop") {
-        // If user sends a shop command, send shop items
-        shopTypeHandler(input, senderID);
+        } else if (getCommandType(input) == "shop") {
+          // If user sends a shop command, send shop items
+          shopTypeHandler(input, senderID);
 
-      } else if (getCommandType(input) == "unknown") {
-        // If user sends an unknown command, send a fixed reply
-        unknown(input, senderID);
+        } else if (getCommandType(input) == "unknown") {
+          // If user sends an unknown command, send a fixed reply
+          unknown(input, senderID);
 
+        }
       }
+    } else {
+      // If user sends a non-text message, send a fixed reply
+      unknown("What is that?", senderID);
     }
   }
 }
