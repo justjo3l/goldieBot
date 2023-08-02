@@ -1,6 +1,7 @@
 // FILE TO HANDLE SHOP COMMANDS
 
 import shop from './shop_commands/shop.js';
+import shopStart from './shop_commands/shopStart.js';
 
 // Function to handle shop commands
 export default function shopTypeHandler(command, senderID) {
