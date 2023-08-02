@@ -1,6 +1,6 @@
 // FILE TO HANDLE SHOP PAGE COMMAND
 
-import shop from "./shop";
+import shop from "./shop.js";
 
 export default function shopPage(command, senderID) {
 
