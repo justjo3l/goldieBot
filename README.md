@@ -63,6 +63,33 @@ This bot intends to provide Goldstein residents easy access to Dino menus, Goldi
     dinner
     ```
 
+- ### `shop`
+
+    Returns a message showing shop items currently in sale.
+    
+    Usage example:
+    ```
+    shop
+    ```
+
+- ### `shop <page>`
+
+    Returns a message showing shop items currently in sale per page.
+    
+    Usage example:
+    ```
+    shop 1
+    ```
+
+- ### `shop <keyword>`
+
+    Returns a message searching for the keyword in all shop items.
+    
+    Usage example:
+    ```
+    shop maxibon
+    ```
+
 ## Other Features
 
 If an unrecognized message is sent, the bot replies with a simple message saying the following:
