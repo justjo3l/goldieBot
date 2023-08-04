@@ -34,10 +34,10 @@ export default function shop(senderID, page=0) {
               itemPrice = '0' + itemPrice;
             }
             reply += itemName + ' - $' + itemPrice + '\n';
-            index += 1;
           }
         }
       }
+      index += 1;
     });
     replySender(reply, senderID);
   }).catch((err) => {
