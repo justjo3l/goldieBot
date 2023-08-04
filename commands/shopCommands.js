@@ -16,7 +16,7 @@ export default function shopTypeHandler(command, senderID) {
     // If user sends shop, send shop items
     shop(senderID);
   } else if (command.startsWith('shop')) {
-    if (command.split(' ').length > 1 && !isNaN(command.split(' '))) {
+    if (command.split(' ').length > 1 && !isNaN(command.split(' ')[1])) {
       shopPage(command, senderID);
     } else {
       // If user sends shop with an item name, send shop item info
