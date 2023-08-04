@@ -20,8 +20,6 @@ export default function shop(senderID, page=0) {
 
     items.forEach((item) => {
       if (index >= (20 * page) && index < (20 * (page + 1))) {
-        console.log("Index: ", index);
-        console.log("Limit: ", 20 * (page + 1)); 
         const itemData = item.item_data;
         const itemVariationData = itemData.variations[0].item_variation_data;
         const locationOverrides = itemVariationData.location_overrides;
