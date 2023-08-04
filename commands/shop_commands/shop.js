@@ -11,6 +11,7 @@ import {ignoreCategories} from '../../data/shop_data.js';
  */
 export default function shop(senderID, page=0) {
   let reply = '';
+  page = parseInt(page);
 
   getItems().then((items) => {
     reply = 'SHOP ITEMS:\n\n';
