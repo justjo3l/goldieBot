@@ -15,7 +15,7 @@ export default function shop(senderID, page=0) {
   getItems().then((items) => {
     reply = 'SHOP ITEMS:\n\n';
 
-    let index = (20 * page) + 1;
+    let index = 20 * page;
 
     items.forEach((item) => {
       if (index < 20 * (page + 1)) {
