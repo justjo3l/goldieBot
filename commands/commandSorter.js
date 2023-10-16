@@ -8,14 +8,10 @@
 export default function getCommandType(command) {
   command = String(command);
   command = command.toLowerCase();
-  if (command == 'dino') {
-    return 'dino';
-  } else if (command.startsWith('dino')) {
+  if (command.startsWith('dino')) {
     return 'dino';
   } else if (['breakfast', 'brunch', 'lunch', 'dinner'].includes(command)) {
     return 'dino';
-  } else if (command == 'shop') {
-    return 'shop';
   } else if (command.startsWith('shop')) {
     return 'shop';
   } else {
