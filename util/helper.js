@@ -46,3 +46,20 @@ export function getDaysFromDate(date) {
   // Returns array of days and time
   return [days, time];
 }
+
+
+/**
+ * Function to get the days from a date based on 21-day cycle
+ * @param {*} date
+ * @return {Array} array of days and time
+ */
+export function getDayFromDate(date) {
+  // Gets current time with 10-hour offset (GMT+10)
+  date = calculateTime(new Date(date), 10);
+
+  // Gets time for further message processing
+  const day = date.getDay()
+
+  // Returns day
+  return day
+}

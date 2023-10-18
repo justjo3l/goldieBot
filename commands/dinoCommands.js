@@ -6,6 +6,7 @@ import {replySender} from '../processes/message.js';
 import dino from './dino_commands/dino.js';
 import dinoStart from './dino_commands/dinoStart.js';
 import dinoOption from './dino_commands/dinoOption.js';
+import dinoTimings from './dino_commands/dinoTimings.js';
 
 /**
  * Function to handle dino commands
@@ -19,9 +20,14 @@ export default function dinoTypeHandler(command, senderID) {
     // If user sends dino, send dino menu
     dino(senderID);
   } else if (command.startsWith('dino')) {
-    // If user sends dino followed by a date and option,
-    // send menu based on the date and option
-    dinoStart(command, senderID);
+    if (command.includes('timing')) {
+      // If user sends dino timings, send dino timings
+      dinoTimings(command, senderID);
+    } else {
+      // If user sends dino followed by a date and option,
+      // send menu based on the date and option
+      dinoStart(command, senderID);
+    }
   } else if (['breakfast', 'brunch', 'lunch', 'dinner'].includes(command)) {
     // If user sends option, send menu based on the option
     dinoOption(command, senderID);
