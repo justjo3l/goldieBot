@@ -40,7 +40,7 @@ export default function processMessage(event) {
         if (getCommandType(input) == 'dino') {
           // If user sends a dino command, send dino menu
           // TEMPORARILY DISABLED
-          dinoTypeHandler(input, senderID);
+          // dinoTypeHandler(input, senderID);
           disabled(input, senderID);
         } else if (getCommandType(input) == 'shop') {
           // If user sends a shop command, send shop items
