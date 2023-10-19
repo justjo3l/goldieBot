@@ -11,13 +11,12 @@ import request from 'request';
 export default function sendMessage(recipientId, message) {
 // Returns a promise to send a message to the sender
   return new Promise(function(resolve, reject) {
-    request({
-      url: 'https://graph.facebook.com/v3.3/me/messages',
-      qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
-      method: 'POST',
-      json: {
-        recipient: {id: recipientId},
-        message: message,
+    axios.post('https://graph.facebook.com/v3.3/me/messages', {
+      recipient: {id: recipientId},
+      message: message,
+    }, {
+      params: {
+        access_token: process.env.PAGE_ACCESS_TOKEN
       },
     }, function(error, response, body) {
       if (error) {
