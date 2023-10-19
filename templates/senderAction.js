@@ -1,14 +1,14 @@
 // FILE TO HANDLE SENDER ACTION
 // NOT PROPERLY IMPLEMENTED YET
 
-import request from 'request';
+import axios from 'axios';
 
 /**
  * Function to handle sender action
  * @param {*} recipientId
  */
 export default function senderAction(recipientId) {
-  request({
+  axios.request({
     url: 'https://graph.facebook.com/v3.3/me/messages',
     qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
     method: 'POST',

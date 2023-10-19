@@ -1,6 +1,6 @@
 // FILE TO HANDLE UNKNOWN COMMAND
 
-import request from 'request';
+import axios from 'axios';
 import {replySender} from '../../processes/message.js';
 
 /**
@@ -13,7 +13,7 @@ export default function unknown(command, senderID) {
   let reply = '';
 
   // Sending a GET request to get user's first name
-  request({url: 'https://graph.facebook.com/v3.3/' + senderID,
+  axios.request({url: 'https://graph.facebook.com/v3.3/' + senderID,
     qs: {access_token: process.env.PAGE_ACCESS_TOKEN,
       fields: 'first_name',
     },
