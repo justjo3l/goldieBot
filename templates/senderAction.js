@@ -2,6 +2,7 @@
 // NOT PROPERLY IMPLEMENTED YET
 
 import axios from 'axios';
+import { response } from 'express';
 
 /**
  * Function to handle sender action
@@ -16,9 +17,9 @@ export default function senderAction(recipientId) {
       params: {
         access_token: process.env.PAGE_ACCESS_TOKEN
       }
-  }, function(error, response, body) {
-    if (error) {
-      console.log('Error sending message: ' + response.error);
-    }
+    }).then(response => {
+    console.log('Sender action sent to ' + recipientId);
+  }).catch(error => {
+    console.log('Error sending sender action: ' + error);
   });
 }

@@ -1,6 +1,7 @@
 // FILE TO HANDLE ACTUAL MESSAGE SENDING PROCESS
 
 import axios from 'axios';
+import error from '../commands/error_commands/error';
 
 /**
  * Function to handle message sending process
@@ -18,15 +19,12 @@ export default function sendMessage(recipientId, message) {
       params: {
         access_token: process.env.PAGE_ACCESS_TOKEN
       },
-    }, function(error, response, body) {
-      if (error) {
-        // Logs error and rejects promise if message sending fails
-        console.log('Error sending message: ' + response.error);
-        reject(response.error);
-      } else {
-        // Resolves promise if message is sent
-        resolve(body);
-      }
+    }).then(response => {
+      // Logs success message if message is sent
+      console.log('Message sent to ' + recipientId);
+    }).catch(error => {
+      // Logs error message if message sending fails
+      console.log('Error sending message: ' + error);
     });
   });
 }

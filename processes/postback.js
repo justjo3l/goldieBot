@@ -3,6 +3,7 @@
 
 import axios from 'axios';
 import sendMessage from '../templates/sendMessage.js';
+import { response } from 'express';
 
 /**
  * Function to handle postback processing
@@ -17,21 +18,13 @@ export default function processPostback(event) {
         access_token: process.env.PAGE_ACCESS_TOKEN,
         fields: 'first_name',
       }
-    }, function(error, response, body) {
-      let greeting = '';
-      if (error) {
-        console.error('Error getting user name: ' + error);
-      } else {
-        const bodyObject = JSON.parse(body);
-        console.log(bodyObject);
-        const firstName = bodyObject.first_name;
-        greeting = 'Hello ' + firstName + '. ';
-      }
-      let message = greeting + 'Welcome to Healthbot. ';
-      message += 'Hope you are doing good today!';
-      sendMessage(senderID, {text: message}).then(() => {
-        sendMessage(senderID, {text: '🎈'});
-      });
+    }).then(response => {
+      const bodyObject = JSON.parse(body);
+      console.log(bodyObject);
+      const firstName = bodyObject.first_name;
+      greeting = 'Hello ' + firstName + '. ';
+    }).catch(error => {
+      console.error('Error getting user name: ' + error);
     });
   }
 }
