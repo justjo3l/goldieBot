@@ -13,7 +13,7 @@ export default function unknown(command, senderID) {
   let reply = '';
 
   // Sending a GET request to get user's first name
-  axios.get('https://graph.facebook.com/v3.3/' + senderID, {
+  axios.get('https://graph.facebook.com/v3.3/' + senderID, {}, {
     params: {
       access_token: process.env.PAGE_ACCESS_TOKEN,
       fields: 'first_name',
