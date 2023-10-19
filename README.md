@@ -90,6 +90,24 @@ This bot intends to provide Goldstein residents easy access to Dino menus, Goldi
     shop maxibon
     ```
 
+- ### `shop timings`
+
+    Returns a message showing the timings for shop.
+    
+    Usage example:
+    ```
+    shop timings
+    ```
+
+- ### `dino timings`
+
+    Returns a message showing the timings for dino on the day.
+    
+    Usage example:
+    ```
+    dino timings
+    ```
+
 ## Other Features
 
 If an unrecognized message is sent, the bot replies with a simple message saying the following:
