@@ -1,7 +1,7 @@
 // FILE TO HANDLE POSTBACK PROCESSING
 // NOT PROPERLY IMPLEMENTED YET
 
-import request from 'request';
+import axios from 'axios';
 import sendMessage from '../templates/sendMessage.js';
 
 /**
@@ -12,11 +12,9 @@ export default function processPostback(event) {
   const senderID = event.sender.id;
   const payload = event.postback.payload;
   if (payload === 'WELCOME') {
-    request({url: 'https://graph.facebook.com/v3.3/' + senderID,
-      qs: {access_token: process.env.PAGE_ACCESS_TOKEN,
-        fields: 'first_name',
-      },
-      method: 'GET',
+    axios.get('https://graph.facebook.com/v3.3/' + senderID, {
+      access_token: process.env.PAGE_ACCESS_TOKEN,
+      fields: 'first_name',
     }, function(error, response, body) {
       let greeting = '';
       if (error) {
