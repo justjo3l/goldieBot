@@ -1,7 +1,5 @@
-// FILE TO HANDLE UNKNOWN COMMAND
-
-import request from 'request';
-import {replySender} from '../../processes/message.js';
+import axios from 'axios';
+import { replySender } from '../../processes/message.js';
 
 /**
  * Function to handle the unknown command
@@ -9,31 +7,24 @@ import {replySender} from '../../processes/message.js';
  * @param {*} senderID
  */
 export default function unknown(command, senderID) {
-  // If user sends an unknown command, send a fixed reply
+  // If the user sends an unknown command, send a fixed reply
   let reply = '';
 
-  // Sending a GET request to get user's first name
-  request({url: 'https://graph.facebook.com/v3.3/' + senderID,
-    qs: {access_token: process.env.PAGE_ACCESS_TOKEN,
+  // Sending a GET request to get the user's first name
+  axios.get(`https://graph.facebook.com/v3.3/${senderID}`, {
+    params: {
+      access_token: process.env.PAGE_ACCESS_TOKEN,
       fields: 'first_name',
-    },
-    method: 'GET',
-  }, function(error, response, body) {
-    if (error) {
-      // Logs error if user name is not found
-      console.error('Error getting user name: ' + error);
-    } else {
-      // Creates reply with user's first name
-      const bodyObject = JSON.parse(body);
-      console.log(bodyObject);
-      const firstName = bodyObject.first_name;
-      reply = 'Hello ' + firstName + '! ';
     }
-
-    // Adds user's message to reply
-    reply += 'You said "' + command + '"!';
-
-    // Sends reply to user
+  })
+  .then(response => {
+    const firstName = response.data.first_name;
+    reply = `Hello ${firstName}! `;
+    reply += `You said "${command}"!`;
     replySender(reply, senderID);
+  })
+  .catch(error => {
+    console.error('Error getting user name: ', error);
+    // Handle the error or provide a default reply if needed
   });
 }
