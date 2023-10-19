@@ -13,8 +13,10 @@ export default function senderAction(recipientId) {
     params: {access_token: process.env.PAGE_ACCESS_TOKEN},
     method: 'POST',
     data: {
-      'recipient': {id: recipientId},
-      'sender_action': 'typing_on',
+      json: {
+        recipient: {id: recipientId},
+        message: message,
+      }
     },
   }, function(error, response, body) {
     if (error) {

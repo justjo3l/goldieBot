@@ -15,9 +15,10 @@ export default function sendMessage(recipientId, message) {
       url: 'https://graph.facebook.com/v3.3/me/messages',
       params: {access_token: process.env.PAGE_ACCESS_TOKEN},
       method: 'POST',
-      data: {
-        recipient: {id: recipientId},
-        message: message,
+      data: { json: {
+          recipient: {id: recipientId},
+          message: message,
+        }
       },
     }, function(error, response, body) {
       if (error) {
