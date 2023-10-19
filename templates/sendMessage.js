@@ -1,7 +1,6 @@
 // FILE TO HANDLE ACTUAL MESSAGE SENDING PROCESS
 
 import axios from 'axios';
-import error from '../commands/error_commands/error';
 
 /**
  * Function to handle message sending process

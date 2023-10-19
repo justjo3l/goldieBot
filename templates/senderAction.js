@@ -2,7 +2,6 @@
 // NOT PROPERLY IMPLEMENTED YET
 
 import axios from 'axios';
-import { response } from 'express';
 
 /**
  * Function to handle sender action

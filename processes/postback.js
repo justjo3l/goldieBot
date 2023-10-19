@@ -2,8 +2,6 @@
 // NOT PROPERLY IMPLEMENTED YET
 
 import axios from 'axios';
-import sendMessage from '../templates/sendMessage.js';
-import { response } from 'express';
 
 /**
  * Function to handle postback processing
