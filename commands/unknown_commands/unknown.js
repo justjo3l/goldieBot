@@ -14,7 +14,7 @@ export default function unknown(command, senderID) {
 
   // Sending a GET request to get user's first name
   axios.request({url: 'https://graph.facebook.com/v3.3/' + senderID,
-    qs: {access_token: process.env.PAGE_ACCESS_TOKEN,
+    params: {access_token: process.env.PAGE_ACCESS_TOKEN,
       fields: 'first_name',
     },
     method: 'GET',
