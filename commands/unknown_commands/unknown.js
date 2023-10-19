@@ -13,13 +13,8 @@ export default function unknown(command, senderID) {
   let reply = '';
 
   // Sending a GET request to get user's first name
-  axios.get('https://graph.facebook.com/v3.3/' + senderID, {
-    fields: 'first_name',
-  }, {
-    params: {
-      access_token: process.env.PAGE_ACCESS_TOKEN,
-    },
-  }, function(error, response, body) {
+  axios.get('https://graph.facebook.com/v3.3/' + senderID + '?fields=first_name&access_token=' + process.env.PAGE_ACCESS_TOKEN, 
+  function(error, response, body) {
     if (error) {
       // Logs error if user name is not found
       console.error('Error getting user name: ' + error);
