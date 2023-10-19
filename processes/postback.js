@@ -13,8 +13,10 @@ export default function processPostback(event) {
   const payload = event.postback.payload;
   if (payload === 'WELCOME') {
     axios.get('https://graph.facebook.com/v3.3/' + senderID, {
-      access_token: process.env.PAGE_ACCESS_TOKEN,
-      fields: 'first_name',
+      params: {
+        access_token: process.env.PAGE_ACCESS_TOKEN,
+        fields: 'first_name',
+      }
     }, function(error, response, body) {
       let greeting = '';
       if (error) {
