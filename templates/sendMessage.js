@@ -11,14 +11,11 @@ import axios from 'axios';
 export default function sendMessage(recipientId, message) {
 // Returns a promise to send a message to the sender
   return new Promise(function(resolve, reject) {
-    axios.post({
-      url: 'https://graph.facebook.com/v3.3/me/messages',
+    axios.post('https://graph.facebook.com/v3.3/me/messages', {
+      recipient: {id: recipientId},
+      message: message,
+    }, {
       params: {access_token: process.env.PAGE_ACCESS_TOKEN},
-      data: { json: {
-          recipient: {id: recipientId},
-          message: message,
-        }
-      },
     }, function(error, response, body) {
       if (error) {
         // Logs error and rejects promise if message sending fails
