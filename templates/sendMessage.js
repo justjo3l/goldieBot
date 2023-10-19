@@ -1,6 +1,6 @@
 // FILE TO HANDLE ACTUAL MESSAGE SENDING PROCESS
 
-import axios from 'axios';
+import request from 'request';
 
 /**
  * Function to handle message sending process
@@ -11,11 +11,14 @@ import axios from 'axios';
 export default function sendMessage(recipientId, message) {
 // Returns a promise to send a message to the sender
   return new Promise(function(resolve, reject) {
-    axios.post('https://graph.facebook.com/v3.3/me/messages', {
-      recipient: {id: recipientId},
-      message: message,
-    }, {
-      params: {access_token: process.env.PAGE_ACCESS_TOKEN},
+    request({
+      url: 'https://graph.facebook.com/v3.3/me/messages',
+      qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
+      method: 'POST',
+      json: {
+        recipient: {id: recipientId},
+        message: message,
+      },
     }, function(error, response, body) {
       if (error) {
         // Logs error and rejects promise if message sending fails
