@@ -8,10 +8,9 @@ import axios from 'axios';
  * @param {*} recipientId
  */
 export default function senderAction(recipientId) {
-  axios.request({
+  axios.post({
     url: 'https://graph.facebook.com/v3.3/me/messages',
     params: {access_token: process.env.PAGE_ACCESS_TOKEN},
-    method: 'POST',
     data: {
       json: {
         recipient: {id: recipientId},

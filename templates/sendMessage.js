@@ -11,10 +11,9 @@ import axios from 'axios';
 export default function sendMessage(recipientId, message) {
 // Returns a promise to send a message to the sender
   return new Promise(function(resolve, reject) {
-    axios.request({
+    axios.post({
       url: 'https://graph.facebook.com/v3.3/me/messages',
       params: {access_token: process.env.PAGE_ACCESS_TOKEN},
-      method: 'POST',
       data: { json: {
           recipient: {id: recipientId},
           message: message,
