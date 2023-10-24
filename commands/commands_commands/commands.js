@@ -11,12 +11,15 @@ export default function commands(senderID) {
   // If user sends a commands command, send the list of commands
   const reply = 'Umm, commands :)';
 
-  fs.readFile('../../README.md', 'utf8', (err, data) => {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log(data);
-    }
+  // Read README.md file
+  fs.readFile('README.md', 'utf8', (err, data) => {
+		if (err) {
+			// Logs error if file reading fails
+			console.log(err);
+		} else {
+			// Sends README.md file to user
+			replySender(data, senderID);
+		}
   });
 
   // Sends reply to user
