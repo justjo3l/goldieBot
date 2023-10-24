@@ -1,7 +1,7 @@
 // FILE TO HANDLE COMMANDS COMMAND
 
 import {replySender} from '../../processes/message.js';
-import {fs} from 'fs';
+import * as fs from 'fs';
 
 /**
  * Function to handle the commands command
