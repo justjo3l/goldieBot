@@ -2,6 +2,7 @@
 
 import {replySender} from '../../processes/message.js';
 import * as fs from 'fs';
+import { getCommandHelps, getCommands } from '../../util/helper.js';
 
 /**
  * Function to handle the commands command
@@ -9,7 +10,7 @@ import * as fs from 'fs';
  */
 export default function commands(senderID) {
   // If user sends a commands command, send the list of commands
-  const reply = 'Umm, commands :)';
+  const reply = '';
 
 	let commands = [];
 	let commandHelps = [];
@@ -19,12 +20,15 @@ export default function commands(senderID) {
 		if (err) {
 			// Logs error if file reading fails
 			console.log(err);
+			reply = 'Error getting commands.';
 		} else {
 			// Logs data
-			// Add all text between ` and ` from lines starting with - and ending with a newline
-			// to the commands array
-			commands = data.match(/(?<=- `)(.*?)(?=`)/gms);
-			console.log(commands);
+			commands = getCommands(data);
+			commandHelps = getCommandHelps(data);
+			reply = 'Here are the list of commands:\n\n';
+			for (let i = 0; i < commands.length; i++) {
+				reply += commands[i] + '\n\n' + commandHelps[i] + '\n\n\n';
+			}
 		}
   });
 
