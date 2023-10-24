@@ -17,8 +17,8 @@ export default function commands(senderID) {
 			// Logs error if file reading fails
 			console.log(err);
 		} else {
-			// Sends README.md file to user
-			replySender(data, senderID);
+			// Logs data
+			console.log(data);
 		}
   });
 
