@@ -21,7 +21,10 @@ export default function commands(senderID) {
 			console.log(err);
 		} else {
 			// Logs data
-			commands.push(data.match(/- #+ `[A-Za-z]+ [A-Za-z]+`\\n/i));
+			// Add all lines where the first character is a - and ends with a newline
+			// to the commands array
+			commands = data.match(/^-.*\n/gm);
+			console.log(commands);
 		}
   });
 
