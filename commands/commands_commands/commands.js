@@ -11,6 +11,9 @@ export default function commands(senderID) {
   // If user sends a commands command, send the list of commands
   const reply = 'Umm, commands :)';
 
+	let commands = [];
+	let commandHelps = [];
+
   // Read README.md file
   fs.readFile('README.md', 'utf8', (err, data) => {
 		if (err) {
@@ -18,7 +21,7 @@ export default function commands(senderID) {
 			console.log(err);
 		} else {
 			// Logs data
-			console.log(data);
+			commands.push(data.match(/- #+ `[A-Za-z]+ [A-Za-z]+`\\n/i));
 		}
   });
 
