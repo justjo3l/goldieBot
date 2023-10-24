@@ -29,6 +29,7 @@ export default function commands(senderID) {
 			for (let i = 0; i < commands.length; i++) {
 				reply += commands[i] + '\n\n' + commandHelps[i] + '\n\n\n';
 			}
+			console.log(reply);
 		}
   });
 
