@@ -7,7 +7,7 @@ This bot intends to provide Goldstein residents easy access to Dino menus, Goldi
 
 - ### `dino`
 
-    Returns a message showing the menu for the next possible meal at dino.
+    **Returns** a message showing the menu for the next possible meal at dino.
   
     For example, if you send this command at 03:00 PM on a Sunday, it will show you the Dinner menu for Sunday.
     
@@ -18,7 +18,7 @@ This bot intends to provide Goldstein residents easy access to Dino menus, Goldi
 
 - ### `dino <date> <meal_type>`
 
-    Returns a message showing the menu for a specific meal on a certain date. The Date format is DD/MM/YYY.
+    **Returns** a message showing the menu for a specific meal on a certain date. The Date format is DD/MM/YYY.
     
     Acceptable inputs for meal_type are "breakfast", "brunch", "lunch" and "dinner". Any other input will automatically result in the return of dinner menu (as it is the most searched menu).
     
@@ -29,7 +29,7 @@ This bot intends to provide Goldstein residents easy access to Dino menus, Goldi
 
 - ### `breakfast`
 
-    Returns a message showing the breakfast menu for the day.
+    **Returns** a message showing the breakfast menu for the day.
     
     Usage example:
     ```
@@ -38,7 +38,7 @@ This bot intends to provide Goldstein residents easy access to Dino menus, Goldi
 
 - ### `brunch`
 
-    Returns a message showing the brunch menu for the day.
+    **Returns** a message showing the brunch menu for the day.
     
     Usage example:
     ```
@@ -47,7 +47,7 @@ This bot intends to provide Goldstein residents easy access to Dino menus, Goldi
 
 - ### `lunch`
 
-    Returns a message showing the lunch menu for the day.
+    **Returns** a message showing the lunch menu for the day.
     
     Usage example:
     ```
@@ -56,7 +56,7 @@ This bot intends to provide Goldstein residents easy access to Dino menus, Goldi
 
 - ### `dinner`
 
-    Returns a message showing the dinner menu for the day.
+    **Returns** a message showing the dinner menu for the day.
     
     Usage example:
     ```
@@ -65,7 +65,7 @@ This bot intends to provide Goldstein residents easy access to Dino menus, Goldi
 
 - ### `shop`
 
-    Returns a message showing shop items currently in sale.
+    **Returns** a message showing shop items currently in sale.
     
     Usage example:
     ```
@@ -74,7 +74,7 @@ This bot intends to provide Goldstein residents easy access to Dino menus, Goldi
 
 - ### `shop <page>`
 
-    Returns a message showing shop items currently in sale per page.
+    **Returns** a message showing shop items currently in sale per page.
     
     Usage example:
     ```
@@ -83,7 +83,7 @@ This bot intends to provide Goldstein residents easy access to Dino menus, Goldi
 
 - ### `shop <keyword>`
 
-    Returns a message searching for the keyword in all shop items.
+    **Returns** a message searching for the keyword in all shop items.
     
     Usage example:
     ```
@@ -92,7 +92,7 @@ This bot intends to provide Goldstein residents easy access to Dino menus, Goldi
 
 - ### `shop timings`
 
-    Returns a message showing the timings for shop.
+    **Returns** a message showing the timings for shop.
     
     Usage example:
     ```
@@ -101,7 +101,7 @@ This bot intends to provide Goldstein residents easy access to Dino menus, Goldi
 
 - ### `dino timings`
 
-    Returns a message showing the timings for dino on the day.
+    **Returns** a message showing the timings for dino on the day.
     
     Usage example:
     ```
