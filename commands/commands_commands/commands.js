@@ -10,7 +10,7 @@ import { getCommandHelps, getCommands } from '../../util/helper.js';
  */
 export default function commands(senderID) {
   // If user sends a commands command, send the list of commands
-  const reply = '';
+  let reply = '';
 
 	let commands = [];
 	let commandHelps = [];
