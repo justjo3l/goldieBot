@@ -21,9 +21,9 @@ export default function commands(senderID) {
 			console.log(err);
 		} else {
 			// Logs data
-			// Add all lines where the first character is a - and ends with a newline
+			// Add all text between ` and ` from lines starting with - and ending with a newline
 			// to the commands array
-			commands = data.match(/^-.*\n/gm);
+			commands = data.match(/(?<=- `)(.*?)(?=`)/gms);
 			console.log(commands);
 		}
   });
