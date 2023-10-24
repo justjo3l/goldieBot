@@ -14,6 +14,8 @@ export default function getCommandType(command) {
     return 'dino';
   } else if (command.startsWith('shop')) {
     return 'shop';
+  } else if (command.startsWith('command')) {
+    return 'commands';
   } else {
     return 'unknown';
   }

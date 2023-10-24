@@ -7,6 +7,7 @@ import disabled from '../commands/temp_commands/disabled.js';
 import shopTypeHandler from '../commands/shopCommands.js';
 import unknown from '../commands/unknown_commands/unknown.js';
 import error from '../commands/error_commands/error.js';
+import commands from '../commands/commands_commands/commands.js';
 
 /**
  * Function to send a message to the sender
@@ -45,6 +46,9 @@ export default function processMessage(event) {
         } else if (getCommandType(input) == 'shop') {
           // If user sends a shop command, send shop items
           shopTypeHandler(input, senderID);
+        } else if (getCommandType(input) == 'commands') {
+          // If user sends a commands command, send the list of commands
+          commands(input, senderID);
         } else if (getCommandType(input) == 'unknown') {
           // If user sends an unknown command, send a fixed reply
           unknown(input, senderID);
