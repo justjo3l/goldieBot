@@ -1,6 +1,7 @@
 // FILE TO HANDLE COMMANDS COMMAND
 
 import {replySender} from '../../processes/message.js';
+import {fs} from 'fs';
 
 /**
  * Function to handle the commands command
@@ -8,12 +9,15 @@ import {replySender} from '../../processes/message.js';
  */
 export default function commands(senderID) {
   // If user sends a commands command, send the list of commands
-  const reply = 'What is that?';
+  const reply = 'Umm, commands :)';
 
-  const fr = new FileReader();
-
-  fr.readAsText('../../README.md');
-  console.log(fr.result);
+  fs.readFile('../../README.md', 'utf8', (err, data) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(data);
+    }
+  });
 
   // Sends reply to user
   replySender(reply, senderID);
