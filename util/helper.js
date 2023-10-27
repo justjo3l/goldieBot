@@ -81,7 +81,7 @@ export function getCommands(data) {
   });
 
   commands.forEach((command, index) => {
-    commands[index] = "---   " + command + "   ---";
+    commands[index] = "---   " + command.toUpperCase() + "   ---";
   })
 
   return commands;
