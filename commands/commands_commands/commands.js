@@ -30,6 +30,7 @@ export default function commands(senderID) {
 				reply += commands[i] + '\n\n' + commandHelps[i] + '\n\n\n';
 			}
 			console.log(reply);
+			reply = "Hey";
 		}
 
 		// Sends reply to user
