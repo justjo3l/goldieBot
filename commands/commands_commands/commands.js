@@ -27,7 +27,7 @@ export default function commands(command, senderID) {
 			commandHelps = getCommandHelps(data);
 			reply = 'Here are the list of commands:\n\n';
 			for (let i = 0; i < commands.length; i++) {
-				reply += commands[i] + '\n\n' + commandHelps[i] + '\n\n\n';
+				reply += commands[i] + '\n\n' + commandHelps[i] + '\n\n';
 			}
 			console.log(reply);
 		}
