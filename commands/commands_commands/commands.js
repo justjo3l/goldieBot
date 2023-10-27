@@ -31,8 +31,8 @@ export default function commands(senderID) {
 			}
 			console.log(reply);
 		}
-  });
 
-  // Sends reply to user
-  replySender(reply, senderID);
+		// Sends reply to user
+		replySender(reply, senderID);
+  });
 }
