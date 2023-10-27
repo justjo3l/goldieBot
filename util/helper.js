@@ -63,3 +63,45 @@ export function getDayFromDate(date) {
   // Returns day
   return day
 }
+
+/**
+ * Function to get commands from data
+ * @param {*} data
+ * @return {Array} array of commands
+ */
+export function getCommands(data) {
+  let commands = [];
+
+  // Gets all commands from data based on format.
+  data.match(/^-.*\n/gm).forEach((line) => {
+    commands.push(line.substring(
+      line.indexOf("`") + 1, 
+      line.lastIndexOf("`")
+    ));
+  });
+
+  commands.forEach((command, index) => {
+    commands[index] = "---   " + command.toUpperCase() + "   ---";
+  })
+
+  return commands;
+}
+
+/**
+ * Function to get command helps from data
+ * @param {*} data
+ * @return {Array} array of command helps
+ */
+export function getCommandHelps(data) {
+  let commandHelps = [];
+
+  // Gets all command helps from data based on format.
+  data.match(/^.*\*\*Returns\*\*.*\n/gm).forEach((line) => {
+    commandHelps.push(line.substring(
+      line.indexOf("*"),
+      line.lastIndexOf(".") + 1
+    ).replaceAll('*', ''));
+  });
+
+  return commandHelps;
+}
