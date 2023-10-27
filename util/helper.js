@@ -96,7 +96,7 @@ export function getCommandHelps(data) {
     commandHelps.push(line.substring(
       line.indexOf("*"),
       line.lastIndexOf(".") + 1
-    ).replace('*', ''));
+    ).replaceAll('*', ''));
   });
 
   return commandHelps;
