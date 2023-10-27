@@ -80,8 +80,8 @@ export function getCommands(data) {
     ));
   });
 
-  commands.forEach((command) => {
-    command = "---   " + command + "   ---";
+  commands.forEach((command, index) => {
+    commands[index] = "---   " + command + "   ---";
   })
 
   return commands;
